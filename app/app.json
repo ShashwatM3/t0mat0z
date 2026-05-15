@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "hello-expo",
-    "slug": "hello-expo",
+    "name": "Hello World",
+    "slug": "lorem-ipsum",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

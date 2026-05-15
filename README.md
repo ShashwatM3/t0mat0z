@@ -1,0 +1,11 @@
+# lorem_ipsum
+
+Monorepo-style layout with two top-level areas:
+
+## [`app/`](./app/)
+
+Expo + React Native **Hello World** mobile app. All JavaScript, Expo config, assets, and Node dependencies live here. Install and run commands (`npm install`, `npm start`, etc.) are executed **from inside `app/`**.
+
+## [`glasses/`](./glasses/)
+
+Placeholder folder for **glasses-related** work (content TBD). Add specs, prototypes, or a separate package here as the project grows.
