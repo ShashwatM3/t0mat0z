@@ -1,6 +1,7 @@
 name: Security Guard
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
 
