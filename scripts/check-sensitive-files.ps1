@@ -139,6 +139,20 @@ function Test-CommitRange {
   }
 }
 
+function Test-CommitExists {
+  param([string]$Commit)
+  $priorErrorActionPreference = $ErrorActionPreference
+  try {
+    $ErrorActionPreference = "Continue"
+    & git cat-file -e "$Commit^{commit}" 2>$null
+    return ($LASTEXITCODE -eq 0)
+  } catch {
+    return $false
+  } finally {
+    $ErrorActionPreference = $priorErrorActionPreference
+  }
+}
+
 switch ($Mode) {
   "Current" {
     $paths = & git ls-files
@@ -176,6 +190,8 @@ switch ($Mode) {
         continue
       }
       if ($remoteSha -match '^0{40}$') {
+        Test-CommitRange -CommitRange $localSha
+      } elseif (-not (Test-CommitExists -Commit $remoteSha)) {
         Test-CommitRange -CommitRange $localSha
       } else {
         Test-CommitRange -CommitRange "$remoteSha..$localSha"
