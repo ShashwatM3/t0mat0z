@@ -9,3 +9,7 @@ Expo + React Native **Hello World** mobile app. All JavaScript, Expo config, ass
 ## [`glasses/`](./glasses/)
 
 Placeholder folder for **glasses-related** work (content TBD). Add specs, prototypes, or a separate package here as the project grows.
+
+## [`opportunities/`](./opportunities/)
+
+Opportunity-specific work lanes for the Meta Wearables hackathon. Start each concept in its own folder so research, fixtures, acceptance checks, and prototypes do not get mixed together before a slice becomes shared app code.
