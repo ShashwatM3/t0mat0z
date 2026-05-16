@@ -25,6 +25,10 @@ expo-env.d.ts
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+app/ai-server*.log
+
+# generated verifier datasets and reports
+data/
 
 # macOS
 .DS_Store

@@ -4,7 +4,9 @@ Monorepo-style layout with two top-level areas:
 
 ## [`app/`](./app/)
 
-Expo + React Native **Hello World** mobile app. All JavaScript, Expo config, assets, and Node dependencies live here. Install and run commands (`npm install`, `npm start`, etc.) are executed **from inside `app/`**.
+Expo + React Native disease scout simulator. All JavaScript, Expo config, assets, and Node dependencies live here. Install and run commands (`npm install`, `npm start`, `npm run web`, etc.) are executed **from inside `app/`**.
+
+Current demo path: camera trigger -> disease question -> why question -> `DiseaseScoutObservation` JSON -> supervisor packet.
 
 ## [`glasses/`](./glasses/)
 
