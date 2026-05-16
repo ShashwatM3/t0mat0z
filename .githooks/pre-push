@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+
+tmp="$(mktemp)"
+cat > "$tmp"
+
+if command -v pwsh >/dev/null 2>&1; then
+  pwsh -NoProfile -File scripts/check-sensitive-files.ps1 -Mode PrePush < "$tmp"
+  status=$?
+elif command -v powershell.exe >/dev/null 2>&1; then
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/check-sensitive-files.ps1 -Mode PrePush < "$tmp"
+  status=$?
+else
+  echo "PowerShell was not found; cannot run sensitive file guard." >&2
+  status=1
+fi
+
+rm -f "$tmp"
+exit "$status"

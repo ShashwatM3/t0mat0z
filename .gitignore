@@ -31,7 +31,28 @@ yarn-error.*
 *.pem
 
 # local env files
+.env
+.env.*
 .env*.local
+credentials.json
+
+# local AI/operator config - never commit or push
+AGENTS.md
+CLAUDE.md
+.claude/
+.cursor/
+.codex/
+.cursorrules
+.aiderignore
+
+# private keys, local databases, and signing material
+*.key
+*.p8
+*.p12
+*.jks
+*.mobileprovision
+*.sqlite
+*.db
 
 # typescript
 *.tsbuildinfo

@@ -1,0 +1,16 @@
+name: Security Guard
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sensitive-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check protected files and secret patterns
+        shell: pwsh
+        run: ./scripts/check-sensitive-files.ps1 -Mode History

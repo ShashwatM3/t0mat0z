@@ -13,3 +13,12 @@ Placeholder folder for **glasses-related** work (content TBD). Add specs, protot
 ## [`opportunities/`](./opportunities/)
 
 Opportunity-specific work lanes for the Meta Wearables hackathon. Start each concept in its own folder so research, fixtures, acceptance checks, and prototypes do not get mixed together before a slice becomes shared app code.
+
+## Security guard
+
+This repo blocks local agent/operator config, environment files, signing keys, local databases, and obvious token patterns. After cloning, enable the shared hooks once:
+
+```powershell
+git config core.hooksPath .githooks
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-sensitive-files.ps1 -Mode Current
+```
