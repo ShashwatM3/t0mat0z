@@ -12,6 +12,9 @@ const CODEX_MODEL = process.env.DISEASE_SCOUT_CODEX_MODEL || 'gpt-5.5';
 const CODEX_REASONING_EFFORT = process.env.DISEASE_SCOUT_CODEX_REASONING_EFFORT || 'low';
 const MODEL_PROVIDER = process.env.DISEASE_SCOUT_MODEL_PROVIDER || (process.env.OPENAI_API_KEY ? 'openai' : 'codex-cli');
 const CODEX_TIMEOUT_MS = Number(process.env.DISEASE_SCOUT_CODEX_TIMEOUT_MS || 180000);
+const GEMINI_MODEL = process.env.DISEASE_SCOUT_GEMINI_MODEL || 'gemini-2.5-flash-lite';
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '';
+const SUPPORTED_PROVIDERS = new Set(['codex-cli', 'openai', 'gemini']);
 
 const observationSchema = {
   type: 'object',
@@ -102,10 +105,13 @@ const server = createServer(async (request, response) => {
       sendJson(response, 200, {
         ok: true,
         provider: MODEL_PROVIDER,
+        supported_providers: [...SUPPORTED_PROVIDERS],
         api_model: MODEL,
         codex_model: CODEX_MODEL,
         codex_reasoning_effort: CODEX_REASONING_EFFORT,
+        gemini_model: GEMINI_MODEL,
         has_api_key: Boolean(process.env.OPENAI_API_KEY),
+        has_gemini_key: Boolean(GEMINI_API_KEY),
       });
       return;
     }
@@ -115,9 +121,23 @@ const server = createServer(async (request, response) => {
       return;
     }
 
+    if (!SUPPORTED_PROVIDERS.has(MODEL_PROVIDER)) {
+      sendJson(response, 400, {
+        error: `Unsupported DISEASE_SCOUT_MODEL_PROVIDER "${MODEL_PROVIDER}". Use codex-cli, openai, or gemini.`,
+      });
+      return;
+    }
+
     if (MODEL_PROVIDER === 'openai' && !process.env.OPENAI_API_KEY) {
       sendJson(response, 503, {
         error: 'OPENAI_API_KEY missing. Set it in the app server environment or app/.env; never put it in frontend code.',
+      });
+      return;
+    }
+
+    if (MODEL_PROVIDER === 'gemini' && !GEMINI_API_KEY) {
+      sendJson(response, 503, {
+        error: 'GEMINI_API_KEY or GOOGLE_API_KEY missing. Set it only in the app server process or a local secret helper; never put it in frontend code.',
       });
       return;
     }
@@ -243,7 +263,15 @@ async function analyzePlantImage(body) {
     return analyzeWithCodexCli(body);
   }
 
-  const prompt = [
+  if (MODEL_PROVIDER === 'gemini') {
+    return analyzeWithGemini(body);
+  }
+
+  return analyzeWithOpenAI(body);
+}
+
+function buildScoutPrompt(body) {
+  return [
     'You are Disease Scout Memory for a field scouting demo.',
     'Analyze the uploaded plant/leaf image and the worker note.',
     'Return a conservative scouting observation, not a treatment decision.',
@@ -255,6 +283,10 @@ async function analyzePlantImage(body) {
     `Crop: ${body.crop || 'unknown'}`,
     `Zone: ${body.zone || 'unknown'}`,
   ].join('\n');
+}
+
+async function analyzeWithOpenAI(body) {
+  const prompt = buildScoutPrompt(body);
 
   const apiResponse = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
@@ -304,16 +336,94 @@ async function analyzePlantImage(body) {
   }
 
   try {
-    return {
-      ...JSON.parse(outputText),
-      analysis_source: 'openai_responses_vision',
-      model_name: MODEL,
-    };
+    return attachModelMetadata(JSON.parse(outputText), 'openai_responses_vision', MODEL);
   } catch {
     const error = new Error('OpenAI response was not valid JSON.');
     error.statusCode = 502;
     throw error;
   }
+}
+
+async function analyzeWithGemini(body) {
+  const prompt = buildScoutPrompt(body);
+  const { mimeType, base64 } = parseImageDataUrl(body.image_data_url);
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(GEMINI_MODEL)}:generateContent`;
+  const payloads = [
+    buildGeminiPayload(prompt, mimeType, base64, 'current'),
+    buildGeminiPayload(prompt, mimeType, base64, 'legacy'),
+  ];
+
+  let lastError = null;
+  for (const payload of payloads) {
+    const apiResponse = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'x-goog-api-key': GEMINI_API_KEY,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+    const responsePayload = await apiResponse.json().catch(() => null);
+
+    if (!apiResponse.ok) {
+      lastError = responsePayload?.error?.message || `Gemini request failed with ${apiResponse.status}`;
+      continue;
+    }
+
+    const outputText = extractGeminiText(responsePayload);
+    if (!outputText) {
+      lastError = 'Gemini response did not include output text.';
+      continue;
+    }
+
+    try {
+      return attachModelMetadata(parseJsonText(outputText), 'gemini_generate_content_vision', `gemini:${GEMINI_MODEL}`);
+    } catch (error) {
+      lastError = `Gemini response was not valid DiseaseScoutObservation JSON. ${error.message}`;
+    }
+  }
+
+  const error = new Error(lastError || 'Gemini analysis failed.');
+  error.statusCode = 502;
+  throw error;
+}
+
+function buildGeminiPayload(prompt, mimeType, base64, mode) {
+  const payload = {
+    contents: [
+      {
+        parts: [
+          {
+            inline_data: {
+              mime_type: mimeType,
+              data: base64,
+            },
+          },
+          { text: prompt },
+        ],
+      },
+    ],
+  };
+
+  if (mode === 'current') {
+    payload.generationConfig = {
+      responseFormat: {
+        text: {
+          mimeType: 'application/json',
+          schema: observationSchema,
+        },
+      },
+      maxOutputTokens: 900,
+    };
+  } else {
+    payload.generationConfig = {
+      responseMimeType: 'application/json',
+      responseSchema: observationSchema,
+      maxOutputTokens: 900,
+    };
+  }
+
+  return payload;
 }
 
 async function analyzeWithCodexCli(body) {
@@ -381,11 +491,7 @@ async function analyzeWithCodexCli(body) {
       throw error;
     }
 
-    return {
-      ...parseJsonText(outputText),
-      analysis_source: 'codex_cli_subscription_vision',
-      model_name: `codex-cli:${CODEX_MODEL}:${CODEX_REASONING_EFFORT}`,
-    };
+    return attachModelMetadata(parseJsonText(outputText), 'codex_cli_subscription_vision', `codex-cli:${CODEX_MODEL}:${CODEX_REASONING_EFFORT}`);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -453,6 +559,69 @@ function parseJsonText(text) {
   return JSON.parse(candidate);
 }
 
+function parseImageDataUrl(dataUrl) {
+  const match = dataUrl.match(/^data:(image\/[-+.\w]+);base64,([\s\S]+)$/);
+  if (!match) {
+    const error = new Error('image_data_url must be a base64 data:image URL.');
+    error.statusCode = 400;
+    throw error;
+  }
+  return {
+    mimeType: match[1],
+    base64: match[2],
+  };
+}
+
+function attachModelMetadata(observation, analysisSource, modelName) {
+  return {
+    ...validateObservationShape(observation),
+    analysis_source: analysisSource,
+    model_name: modelName,
+  };
+}
+
+function validateObservationShape(observation) {
+  if (!observation || typeof observation !== 'object' || Array.isArray(observation)) {
+    throw new Error('Model output must be a JSON object.');
+  }
+
+  for (const field of observationSchema.required) {
+    if (!(field in observation)) {
+      throw new Error(`Model output missing required field: ${field}`);
+    }
+  }
+
+  const enumChecks = {
+    confidence: observationSchema.properties.confidence.enum,
+    review_status: observationSchema.properties.review_status.enum,
+    broad_state: observationSchema.properties.broad_state.enum,
+  };
+  for (const [field, allowed] of Object.entries(enumChecks)) {
+    if (!allowed.includes(observation[field])) {
+      throw new Error(`Model output field ${field} has invalid value: ${observation[field]}`);
+    }
+  }
+
+  if (!Array.isArray(observation.limitation_flags)) {
+    throw new Error('Model output limitation_flags must be an array.');
+  }
+  const allowedFlags = observationSchema.properties.limitation_flags.items.enum;
+  for (const flag of observation.limitation_flags) {
+    if (!allowedFlags.includes(flag)) {
+      throw new Error(`Model output limitation flag is invalid: ${flag}`);
+    }
+  }
+
+  if (!Array.isArray(observation.visible_symptoms)) {
+    throw new Error('Model output visible_symptoms must be an array.');
+  }
+  if (observation.treatment_recommendation !== null) {
+    throw new Error('Model output must not include treatment advice.');
+  }
+
+  return observation;
+}
+
 function extractOutputText(payload) {
   if (typeof payload?.output_text === 'string') return payload.output_text;
 
@@ -465,4 +634,13 @@ function extractOutputText(payload) {
     }
   }
   return chunks.join('').trim();
+}
+
+function extractGeminiText(payload) {
+  const parts = payload?.candidates?.[0]?.content?.parts || [];
+  return parts
+    .map((part) => part.text)
+    .filter((text) => typeof text === 'string')
+    .join('')
+    .trim();
 }

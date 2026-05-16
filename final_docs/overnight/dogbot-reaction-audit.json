@@ -1,0 +1,475 @@
+{
+  "guild_id": "1504987658005516481",
+  "channel_id": "1505114553606733834",
+  "channel_name": "dogbot",
+  "project_control_category_id": "1504993811267457096",
+  "channel_status": {
+    "channel_id": "1505114553606733834",
+    "channel_name": "dogbot",
+    "guild_id": "1504987658005516481",
+    "parent_category_id": "1504993811267457096",
+    "expected_project_control_category_id": "1504993811267457096",
+    "under_project_control": true
+  },
+  "review": [
+    {
+      "experiment_id": "T003",
+      "message_id": "1505124496888037486",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T004",
+      "message_id": "1505124506145132617",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T005",
+      "message_id": "1505124513476509779",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T006",
+      "message_id": "1505124522003529769",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T007",
+      "message_id": "1505124529381441688",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T008",
+      "message_id": "1505124536134402092",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-014628",
+      "message_id": "1505129311991103558",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-015127",
+      "message_id": "1505130604402970716",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-demo-proof-packet",
+      "message_id": "1505132088578412606",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-project-control-visibility",
+      "message_id": "1505133581796905020",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-live-model-smoke",
+      "message_id": "1505136328625623112",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-lan-api-route",
+      "message_id": "1505138700806524992",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-project-control-livecheck-20260516-022917",
+      "message_id": "1505140073975255050",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-023641",
+      "message_id": "1505142010670223412",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-network-preflight",
+      "message_id": "1505142040273616978",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-024022",
+      "message_id": "1505142951360200755",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-live-model-diversity-smoke",
+      "message_id": "1505144717795393536",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-demo-operator-card",
+      "message_id": "1505145543754649620",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-project-control-visible-recheck-20260516-025800",
+      "message_id": "1505147302778634362",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visual-proof-screenshot-reset-20260516-030247",
+      "message_id": "1505148507449856023",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-network-route-detail-20260516-031125",
+      "message_id": "1505150678484652044",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-live-ui-upload-smoke-20260516-031549",
+      "message_id": "1505152657541697547",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-demo-ready-check-20260516-032422",
+      "message_id": "1505154399163646053",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-032545",
+      "message_id": "1505154409137438754",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-project-control-live-visibility-20260516-033139",
+      "message_id": "1505155770319245403",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-demo-ready-live-dogbot-audit-20260516-033846",
+      "message_id": "1505157560330879119",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-web-route-dedupe-20260516-034525",
+      "message_id": "1505159233203736647",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-diversity-aggregate-audit-20260516-035253",
+      "message_id": "1505161112235020299",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-dogbot-audit-reuse-20260516-035603",
+      "message_id": "1505161912563011604",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-demo-day-status-20260516-040116",
+      "message_id": "1505163222330769428",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-morning-status-sequence-20260516-040602",
+      "message_id": "1505164421570498681",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-final-status-regeneration-20260516-040918",
+      "message_id": "1505165244366852217",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-041116",
+      "message_id": "1505165905976627213",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-final-receipt-audit-rewrite-20260516-041514",
+      "message_id": "1505166737576951858",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visual-audit-controller-path-20260516-042842",
+      "message_id": "1505170128021749831",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-latency-demo-audit-20260516-043551",
+      "message_id": "1505171926069285009",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-044001",
+      "message_id": "1505173163766579201",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-demo-status-auditing-state-20260516-044528",
+      "message_id": "1505174347629727824",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-project-control-live-verify-20260516-045228",
+      "message_id": "1505176108008734830",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-final-review-gate-20260516-045910",
+      "message_id": "1505177796593324042",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-no-cheating-final-gate-20260516-050621",
+      "message_id": "1505179604451725412",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-live-ui-final-gate-20260516-051131",
+      "message_id": "1505180901670391840",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-project-control-visibility-status-20260516-0522",
+      "message_id": "1505183640735191180",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-052548",
+      "message_id": "1505184711658705006",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-061029",
+      "message_id": "1505242262529904711",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "queued-local"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-061517",
+      "message_id": "1505242276970893534",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "queued-local"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-070031",
+      "message_id": "1505242288975253626",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "queued-local"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-074546",
+      "message_id": "1505242300442476548",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "queued-local"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-083103",
+      "message_id": "1505242313063137301",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "queued-local"
+    },
+    {
+      "experiment_id": "T999-dogbot-auth-restored-20260516-091621",
+      "message_id": "1505242521062609046",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 0,
+      "receipt_kind": "accepted"
+    },
+    {
+      "experiment_id": "T999-visible-20260516-091619",
+      "message_id": "1505242782095245352",
+      "thumbs_up_count": 1,
+      "thumbs_down_count": 1,
+      "flagged_for_morning_review": false,
+      "screenshot_count": 1,
+      "receipt_kind": "accepted"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+﻿{
+    "generated_at":  "2026-05-16T06:41:11.0593381-07:00",
+    "status":  "pass",
+    "elapsed_ms":  14006,
+    "endpoint":  "http://localhost:8787/api/scout/analyze",
+    "provider_health":  {
+                            "ok":  true,
+                            "provider":  "codex-cli",
+                            "supported_providers":  [
+                                                        "codex-cli",
+                                                        "openai",
+                                                        "gemini"
+                                                    ],
+                            "api_model":  "gpt-4.1-mini",
+                            "codex_model":  "gpt-5.5",
+                            "codex_reasoning_effort":  "low",
+                            "gemini_model":  "gemini-2.5-flash-lite",
+                            "has_api_key":  false,
+                            "has_gemini_key":  false
+                        },
+    "sample":  {
+                   "image_id":  "holdout-00000-b3404b141d-clear",
+                   "source_dataset":  "PlantDoc",
+                   "upload_filename":  "neutral-holdout-clear.jpg",
+                   "upload_size_bytes":  88463,
+                   "note":  "original label intentionally omitted from request body"
+               },
+    "error":  null,
+    "observation":  {
+                        "observation_id":  "live-smoke-holdout-00000-clear",
+                        "worker_id":  "worker-07",
+                        "crop":  "tomato",
+                        "zone":  "live-smoke",
+                        "image_uri":  "web-upload://neutral-holdout-clear.jpg",
+                        "capture_source":  "simulated_meta_dat_capture",
+                        "upload_filename":  "neutral-holdout-clear.jpg",
+                        "upload_size_bytes":  88463,
+                        "upload_mime_type":  "image/jpeg",
+                        "report_channel":  "typed_report_voice_stand_in",
+                        "wearer_note":  "tomato leaf observation, single front view",
+                        "possible_disease":  "possible tomato leaf spot disease, such as Septoria leaf spot or early blight; not enough evidence for a specific diagnosis",
+                        "confidence":  "low",
+                        "limitation_flags":  [
+                                                 "single_view_only",
+                                                 "underside_missing",
+                                                 "no_healthy_comparison",
+                                                 "model_uncertain"
+                                             ],
+                        "evidence_quality":  "Single front-view image of detached/isolated tomato leaves; symptoms are visible but underside, plant context, and healthy comparison are missing.",
+                        "next_check":  "Capture close-up front and underside images of attached symptomatic leaves plus one nearby healthy tomato leaf from the same plant or row.",
+                        "supervisor_action":  "Review additional images for lesion pattern, underside signs, and distribution on the plant before assigning a disease label.",
+                        "review_status":  "supervisor_review",
+                        "treatment_recommendation":  null,
+                        "finding_why":  "Leaves show yellowing and many small to medium brown circular spots with necrotic centers, consistent with a leaf-spot pattern but not specific enough from this view alone.",
+                        "broad_state":  "disease_like",
+                        "visible_symptoms":  [
+                                                 "yellowing leaf tissue",
+                                                 "numerous brown circular leaf spots",
+                                                 "necrotic speckling",
+                                                 "irregular damaged leaf margins"
+                                             ],
+                        "send_status":  "not_sent_demo_only",
+                        "analysis_source":  "codex_cli_subscription_vision",
+                        "model_name":  "codex-cli:gpt-5.5:low",
+                        "model_latency_ms":  13932
+                    }
+}

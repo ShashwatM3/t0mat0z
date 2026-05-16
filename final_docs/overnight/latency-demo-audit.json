@@ -1,0 +1,58 @@
+﻿{
+    "generated_at":  "2026-05-16T09:17:23.3828309-07:00",
+    "status":  "pass",
+    "max_model_latency_ms":  14405,
+    "average_model_latency_ms":  12305,
+    "max_service_latency_ms":  95,
+    "model_latency_warn_threshold_ms":  20000,
+    "average_latency_warn_threshold_ms":  20000,
+    "service_latency_warn_threshold_ms":  1000,
+    "model_latencies":  [
+                            {
+                                "name":  "live_model_smoke",
+                                "elapsed_ms":  14006,
+                                "source":  "live-model-smoke.json"
+                            },
+                            {
+                                "name":  "live_ui_upload",
+                                "elapsed_ms":  11115,
+                                "source":  "live-ui-upload-smoke.json"
+                            },
+                            {
+                                "name":  "diversity_diversity-spot-01",
+                                "elapsed_ms":  14405,
+                                "source":  "live-model-diversity-smoke.json"
+                            },
+                            {
+                                "name":  "diversity_diversity-healthy-01",
+                                "elapsed_ms":  9829,
+                                "source":  "live-model-diversity-smoke.json"
+                            },
+                            {
+                                "name":  "diversity_diversity-curl-01",
+                                "elapsed_ms":  12171,
+                                "source":  "live-model-diversity-smoke.json"
+                            }
+                        ],
+    "service_latencies":  [
+                              {
+                                  "name":  "web_status",
+                                  "elapsed_ms":  95,
+                                  "ok":  true,
+                                  "source":  "http://localhost:19006"
+                              },
+                              {
+                                  "name":  "backend_health",
+                                  "elapsed_ms":  5,
+                                  "ok":  true,
+                                  "source":  "http://localhost:8787/health"
+                              }
+                          ],
+    "fallback":  "If a live model call stalls during judging, show live-model-diversity-smoke.json, live-ui-upload-smoke.png, and demo-day-status.md first, then retry the live upload.",
+    "blockers":  [
+
+                 ],
+    "warnings":  [
+
+                 ]
+}

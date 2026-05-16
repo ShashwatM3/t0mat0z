@@ -1,0 +1,548 @@
+{
+  "channel_id": "1505114553606733834",
+  "channel_name": "dogbot",
+  "guild_id": "1504987658005516481",
+  "messages": [
+    {
+      "channel_id": "1505114553606733834",
+      "experiment_id": "T003",
+      "message_id": "1505124496888037486",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T08:27:25.068596+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "experiment_id": "T004",
+      "message_id": "1505124506145132617",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T08:27:27.221796+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "experiment_id": "T005",
+      "message_id": "1505124513476509779",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-mobile-390.png"
+      ],
+      "sent_at": "2026-05-16T08:27:29.296926+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "experiment_id": "T006",
+      "message_id": "1505124522003529769",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T08:27:31.110644+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "experiment_id": "T007",
+      "message_id": "1505124529381441688",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T08:27:32.715167+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "experiment_id": "T008",
+      "message_id": "1505124536134402092",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T08:27:34.888040+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "experiment_id": "T999-visible-20260516-014628",
+      "message_id": "1505129311991103558",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T08:46:32.962846+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "experiment_id": "T999-visible-20260516-015127",
+      "message_id": "1505130604402970716",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T08:51:41.054967+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "experiment_id": "T999-demo-proof-packet",
+      "message_id": "1505132088578412606",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T08:57:35.324109+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-project-control-visibility",
+      "message_id": "1505133581796905020",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T09:03:31.033818+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-live-model-smoke",
+      "message_id": "1505136328625623112",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T09:14:25.777875+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-lan-api-route",
+      "message_id": "1505138700806524992",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T09:23:53.804610+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-project-control-livecheck-20260516-022917",
+      "message_id": "1505140073975255050",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T09:29:18.737128+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-023641",
+      "message_id": "1505142010670223412",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T09:37:00.703719+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-network-preflight",
+      "message_id": "1505142040273616978",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T09:37:07.629850+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-024022",
+      "message_id": "1505142951360200755",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T09:40:45.119219+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-live-model-diversity-smoke",
+      "message_id": "1505144717795393536",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T09:47:45.886403+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-demo-operator-card",
+      "message_id": "1505145543754649620",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T09:51:02.915325+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-project-control-visible-recheck-20260516-025800",
+      "message_id": "1505147302778634362",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T09:58:02.264996+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visual-proof-screenshot-reset-20260516-030247",
+      "message_id": "1505148507449856023",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T10:02:49.895735+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-network-route-detail-20260516-031125",
+      "message_id": "1505150678484652044",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T10:11:27.401361+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-live-ui-upload-smoke-20260516-031549",
+      "message_id": "1505152657541697547",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/live-ui-upload-smoke.png"
+      ],
+      "sent_at": "2026-05-16T10:19:19.346773+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-demo-ready-check-20260516-032422",
+      "message_id": "1505154399163646053",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T10:26:14.333830+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-032545",
+      "message_id": "1505154409137438754",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T10:26:16.908018+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-project-control-live-visibility-20260516-033139",
+      "message_id": "1505155770319245403",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T10:31:41.242570+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-demo-ready-live-dogbot-audit-20260516-033846",
+      "message_id": "1505157560330879119",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T10:38:48.072774+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-web-route-dedupe-20260516-034525",
+      "message_id": "1505159233203736647",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T10:45:27.193650+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-diversity-aggregate-audit-20260516-035253",
+      "message_id": "1505161112235020299",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T10:52:54.783714+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-dogbot-audit-reuse-20260516-035603",
+      "message_id": "1505161912563011604",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T10:56:05.532228+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-demo-day-status-20260516-040116",
+      "message_id": "1505163222330769428",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T11:01:17.755161+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-morning-status-sequence-20260516-040602",
+      "message_id": "1505164421570498681",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T11:06:03.753620+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-final-status-regeneration-20260516-040918",
+      "message_id": "1505165244366852217",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T11:09:19.854142+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-041116",
+      "message_id": "1505165905976627213",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T11:11:58.016083+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-final-receipt-audit-rewrite-20260516-041514",
+      "message_id": "1505166737576951858",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T11:15:15.865550+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visual-audit-controller-path-20260516-042842",
+      "message_id": "1505170128021749831",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T11:28:44.300704+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-latency-demo-audit-20260516-043551",
+      "message_id": "1505171926069285009",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T11:35:53.136476+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-044001",
+      "message_id": "1505173163766579201",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T11:40:48.171064+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-demo-status-auditing-state-20260516-044528",
+      "message_id": "1505174347629727824",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T11:45:30.216005+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-project-control-live-verify-20260516-045228",
+      "message_id": "1505176108008734830",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T11:52:29.968898+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-final-review-gate-20260516-045910",
+      "message_id": "1505177796593324042",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T11:59:13.055417+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-no-cheating-final-gate-20260516-050621",
+      "message_id": "1505179604451725412",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T12:06:24.440835+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-live-ui-final-gate-20260516-051131",
+      "message_id": "1505180901670391840",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/live-ui-upload-smoke.png"
+      ],
+      "sent_at": "2026-05-16T12:11:33.682752+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-project-control-visibility-status-20260516-0522",
+      "message_id": "1505183640735191180",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T12:22:26.236630+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-052548",
+      "message_id": "1505184711658705006",
+      "project_control_category_id": "1504993811267457096",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T12:26:41.448490+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-061029",
+      "message_id": "1505242262529904711",
+      "payload_title": "Disease Scout queued local receipt: Visible overnight verification",
+      "project_control_category_id": "1504993811267457096",
+      "receipt_kind": "queued-local",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T16:15:23.450240+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-061517",
+      "message_id": "1505242276970893534",
+      "payload_title": "Disease Scout queued local receipt: Visible overnight verification",
+      "project_control_category_id": "1504993811267457096",
+      "receipt_kind": "queued-local",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T16:15:26.400382+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-070031",
+      "message_id": "1505242288975253626",
+      "payload_title": "Disease Scout queued local receipt: Visible overnight verification",
+      "project_control_category_id": "1504993811267457096",
+      "receipt_kind": "queued-local",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T16:15:28.949874+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-074546",
+      "message_id": "1505242300442476548",
+      "payload_title": "Disease Scout queued local receipt: Visible overnight verification",
+      "project_control_category_id": "1504993811267457096",
+      "receipt_kind": "queued-local",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T16:15:32.222008+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-083103",
+      "message_id": "1505242313063137301",
+      "payload_title": "Disease Scout queued local receipt: Visible overnight verification",
+      "project_control_category_id": "1504993811267457096",
+      "receipt_kind": "queued-local",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T16:15:34.738085+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-dogbot-auth-restored-20260516-091621",
+      "message_id": "1505242521062609046",
+      "payload_title": "Disease Scout accepted experiment: Dogbot live auth restored",
+      "project_control_category_id": "1504993811267457096",
+      "receipt_kind": "accepted",
+      "screenshot_count": 0,
+      "screenshots": [],
+      "sent_at": "2026-05-16T16:16:24.612090+00:00"
+    },
+    {
+      "channel_id": "1505114553606733834",
+      "channel_name": "dogbot",
+      "experiment_id": "T999-visible-20260516-091619",
+      "message_id": "1505242782095245352",
+      "payload_title": "Disease Scout accepted experiment: Visible overnight verification",
+      "project_control_category_id": "1504993811267457096",
+      "receipt_kind": "accepted",
+      "screenshot_count": 1,
+      "screenshots": [
+        "final_docs/overnight/baseline-display-600.png"
+      ],
+      "sent_at": "2026-05-16T16:17:27.073055+00:00"
+    }
+  ],
+  "project_control_category_id": "1504993811267457096"
+}

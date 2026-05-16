@@ -10,7 +10,7 @@ Current demo path: camera trigger -> disease question -> why question -> `Diseas
 
 ## [`glasses/`](./glasses/)
 
-Placeholder folder for **glasses-related** work (content TBD). Add specs, prototypes, or a separate package here as the project grows.
+Meta DAT handoff notes for the Disease Scout capture path. This is currently a checklist/scaffold, not a finished native Android app. The exact real-device acceptance checklist lives at [`final_docs/android-dat-checklist.md`](./final_docs/android-dat-checklist.md).
 
 ## [`opportunities/`](./opportunities/)
 

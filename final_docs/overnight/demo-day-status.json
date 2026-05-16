@@ -1,0 +1,215 @@
+﻿{
+    "generated_at":  "2026-05-16T09:19:10.2796495-07:00",
+    "status":  "warn",
+    "web":  {
+                "ok":  true,
+                "url":  "http://localhost:19006",
+                "status_code":  200,
+                "length":  1271,
+                "elapsed_ms":  83,
+                "error":  null
+            },
+    "backend":  {
+                    "ok":  true,
+                    "url":  "http://localhost:8787/health",
+                    "elapsed_ms":  5,
+                    "provider":  "codex-cli",
+                    "model":  "gpt-5.5",
+                    "error":  null
+                },
+    "heartbeat":  {
+                      "status":  "running",
+                      "pid":  18916,
+                      "now":  "2026-05-16T09:18:51.3363391-07:00",
+                      "stop_at":  "2026-05-16T10:00:00.0000000-07:00"
+                  },
+    "morning_audit":  {
+                          "exists":  false,
+                          "path":  "docs/goals/disease-scout-overnight-experiment-control/notes/morning-audit.md"
+                      },
+    "demo_ready":  {
+                       "status":  "warn",
+                       "blockers":  0,
+                       "warnings":  2,
+                       "dogbot_receipts":  49,
+                       "dogbot_flagged":  0,
+                       "dogbot_source":  "artifact",
+                       "dogbot_pending":  0
+                   },
+    "dogbot_pending_receipts":  {
+                                    "count":  0,
+                                    "path":  "final_docs/overnight/dogbot-pending-receipts.jsonl",
+                                    "experiment_ids":  [
+
+                                                       ]
+                                },
+    "network":  {
+                    "status":  "warn",
+                    "route_type":  "tailscale",
+                    "recommended_api":  "http://100.127.164.111:8787/api/scout/analyze",
+                    "warnings":  1
+                },
+    "live_model":  {
+                       "status":  "pass",
+                       "model":  "codex-cli:gpt-5.5:low",
+                       "confidence":  "low",
+                       "treatment":  null
+                   },
+    "live_diversity":  {
+                           "status":  "pass",
+                           "samples":  3,
+                           "unique_response_signatures":  3,
+                           "unique_possible_diseases":  3,
+                           "unique_broad_states":  2,
+                           "treatment_advice_count":  0,
+                           "failed_sample_count":  0
+                       },
+    "live_ui":  {
+                    "status":  "pass",
+                    "image":  "disease_scout_blind_09.jpg",
+                    "model":  "codex-cli:gpt-5.5:low",
+                    "confidence":  "low",
+                    "screenshot":  "final_docs/overnight/live-ui-upload-smoke.png"
+                },
+    "visual_professionalism":  {
+                                   "status":  "pass",
+                                   "verdict":  "demo_visuals_not_obviously_broken",
+                                   "screenshots":  5,
+                                   "failed":  0
+                               },
+    "latency_demo":  {
+                         "status":  "pass",
+                         "max_model_latency_ms":  14405,
+                         "average_model_latency_ms":  12305,
+                         "max_service_latency_ms":  95,
+                         "fallback":  "If a live model call stalls during judging, show live-model-diversity-smoke.json, live-ui-upload-smoke.png, and demo-day-status.md first, then retry the live upload."
+                     },
+    "dogbot_auth":  {
+                        "status":  "pass",
+                        "candidate_count":  2,
+                        "selected":  "DISCORD_BOT_TOKEN/User",
+                        "blocker":  null,
+                        "candidates":  [
+                                           {
+                                               "label":  "DISCORD_LAB_BOT_TOKEN/User",
+                                               "bot_username":  null,
+                                               "me_status":  401,
+                                               "guilds_status":  401,
+                                               "target_guild_visible":  false,
+                                               "target_guild_name":  null,
+                                               "channel_status":  401,
+                                               "channel_error":  "401: Unauthorized",
+                                               "invite_url":  null
+                                           },
+                                           {
+                                               "label":  "DISCORD_BOT_TOKEN/User",
+                                               "bot_username":  "FieldBot McSproutface",
+                                               "me_status":  200,
+                                               "guilds_status":  200,
+                                               "target_guild_visible":  true,
+                                               "target_guild_name":  "Meta hackathon",
+                                               "channel_status":  200,
+                                               "channel_error":  null,
+                                               "invite_url":  "https://discord.com/oauth2/authorize?client_id=1498110247158681790\u0026scope=bot\u0026permissions=117824"
+                                           }
+                                       ]
+                    },
+    "dogbot_audit":  {
+                         "under_project_control":  true,
+                         "receipts":  51,
+                         "flagged":  0
+                     },
+    "files":  [
+                  {
+                      "label":  "Operator card",
+                      "path":  "final_docs/overnight/demo-operator-card.md",
+                      "exists":  true,
+                      "size_bytes":  5103,
+                      "last_write_time":  "2026-05-16T07:30:11.6462117-07:00"
+                  },
+                  {
+                      "label":  "Proof packet",
+                      "path":  "final_docs/overnight/demo-day-proof-packet.md",
+                      "exists":  true,
+                      "size_bytes":  8353,
+                      "last_write_time":  "2026-05-16T07:30:11.6482196-07:00"
+                  },
+                  {
+                      "label":  "Demo ready JSON",
+                      "path":  "final_docs/overnight/demo-ready-check.json",
+                      "exists":  true,
+                      "size_bytes":  13131,
+                      "last_write_time":  "2026-05-16T09:18:04.4545535-07:00"
+                  },
+                  {
+                      "label":  "Morning audit",
+                      "path":  "docs/goals/disease-scout-overnight-experiment-control/notes/morning-audit.md",
+                      "exists":  false,
+                      "size_bytes":  null,
+                      "last_write_time":  null
+                  },
+                  {
+                      "label":  "Live UI screenshot",
+                      "path":  "final_docs/overnight/live-ui-upload-smoke.png",
+                      "exists":  true,
+                      "size_bytes":  270818,
+                      "last_write_time":  "2026-05-16T07:14:40.2552150-07:00"
+                  },
+                  {
+                      "label":  "Display screenshot",
+                      "path":  "final_docs/overnight/baseline-display-600.png",
+                      "exists":  true,
+                      "size_bytes":  28156,
+                      "last_write_time":  "2026-05-16T09:17:18.1167815-07:00"
+                  },
+                  {
+                      "label":  "Visual audit",
+                      "path":  "final_docs/overnight/visual-professionalism-audit.md",
+                      "exists":  true,
+                      "size_bytes":  873,
+                      "last_write_time":  "2026-05-16T09:17:20.1686689-07:00"
+                  },
+                  {
+                      "label":  "Latency audit",
+                      "path":  "final_docs/overnight/latency-demo-audit.md",
+                      "exists":  true,
+                      "size_bytes":  925,
+                      "last_write_time":  "2026-05-16T09:17:23.4266592-07:00"
+                  },
+                  {
+                      "label":  "Dogbot auth repair",
+                      "path":  "final_docs/overnight/dogbot-auth-repair.md",
+                      "exists":  true,
+                      "size_bytes":  4413,
+                      "last_write_time":  "2026-05-16T08:11:08.6587216-07:00"
+                  },
+                  {
+                      "label":  "FieldBot invite launcher",
+                      "path":  "final_docs/overnight/open-fieldbot-hackathon-invite.cmd",
+                      "exists":  true,
+                      "size_bytes":  117,
+                      "last_write_time":  "2026-05-16T07:25:40.4962716-07:00"
+                  },
+                  {
+                      "label":  "Dogbot pending queue",
+                      "path":  "final_docs/overnight/dogbot-pending-receipts.jsonl",
+                      "exists":  false,
+                      "size_bytes":  null,
+                      "last_write_time":  null
+                  },
+                  {
+                      "label":  "DAT checklist",
+                      "path":  "final_docs/android-dat-checklist.md",
+                      "exists":  true,
+                      "size_bytes":  4117,
+                      "last_write_time":  "2026-05-16T02:35:13.7675627-07:00"
+                  }
+              ],
+    "blockers":  [
+
+                 ],
+    "warnings":  [
+                     "Network preflight has warnings: Only non-private-LAN candidates responded to /health. If this is a Tailscale address, the phone must also be on Tailscale; venue Wi-Fi still needs a separate check.",
+                     "Morning audit is pending until 10:00 AM."
+                 ]
+}

@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { useMemo, useState } from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useEffect, useMemo, useState } from 'react';
+import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
 
 const colors = {
   paper: '#f3efe6',
@@ -84,7 +84,38 @@ const initialStatuses = {
   'Zone C': 'unscouted',
 };
 
-const MODEL_API_URL = 'http://localhost:8787/api/scout/analyze';
+const MODEL_API_PATH = '/api/scout/analyze';
+const CONFIGURED_MODEL_API_URL =
+  typeof process !== 'undefined' && process.env?.EXPO_PUBLIC_DISEASE_SCOUT_API_URL
+    ? process.env.EXPO_PUBLIC_DISEASE_SCOUT_API_URL
+    : '';
+
+function inferModelApiUrl() {
+  if (CONFIGURED_MODEL_API_URL) return CONFIGURED_MODEL_API_URL;
+  if (typeof window !== 'undefined' && window.location?.hostname) {
+    const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
+    return `${protocol}//${window.location.hostname}:8787${MODEL_API_PATH}`;
+  }
+  return `http://localhost:8787${MODEL_API_PATH}`;
+}
+
+const MODEL_API_URL = inferModelApiUrl();
+const DEFERRED_QUEUE_KEY = 'diseaseScoutDeferredQueue:v1';
+
+function readDeferredQueue() {
+  if (typeof window === 'undefined' || !window.localStorage) return [];
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(DEFERRED_QUEUE_KEY) || '[]');
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeDeferredQueue(records) {
+  if (typeof window === 'undefined' || !window.localStorage) return;
+  window.localStorage.setItem(DEFERRED_QUEUE_KEY, JSON.stringify(records.slice(0, 12)));
+}
 
 function PlantVisual({ type }) {
   const leaves = {
@@ -231,6 +262,7 @@ function RecordRow({ label, value, muted = false }) {
 }
 
 export default function App() {
+  const { width: viewportWidth } = useWindowDimensions();
   const [selectedId, setSelectedId] = useState(fixtures[1].id);
   const [stage, setStage] = useState('ready');
   const [statuses, setStatuses] = useState(initialStatuses);
@@ -240,10 +272,27 @@ export default function App() {
   const [modelObservation, setModelObservation] = useState(null);
   const [modelStatus, setModelStatus] = useState('idle');
   const [modelError, setModelError] = useState(null);
+  const [deferredRecords, setDeferredRecords] = useState(readDeferredQueue);
 
   const selected = fixtures.find((fixture) => fixture.id === selectedId) ?? fixtures[1];
   const operatorReport = reportText.trim();
   const evidenceSource = uploadedImage ? 'web_upload' : 'web_simulator_dat_like_capture';
+  const retryableRecord = deferredRecords.find((record) => ['needs_connectivity', 'failed'].includes(record.queue_status));
+  const isCompact = viewportWidth < 760;
+  const isDesktop = viewportWidth >= 1180;
+  const panelLayoutStyle = {
+    flexBasis: isDesktop ? '31.5%' : isCompact ? '100%' : '48%',
+    maxWidth: isDesktop ? '32%' : '100%',
+  };
+  const widePanelLayoutStyle = {
+    flexBasis: isDesktop ? '64%' : '100%',
+    maxWidth: isDesktop ? '65%' : '100%',
+  };
+  const panelStyle = [styles.panel, panelLayoutStyle];
+
+  useEffect(() => {
+    writeDeferredQueue(deferredRecords);
+  }, [deferredRecords]);
 
   const observation = useMemo(() => {
     const hasCapture = stage !== 'ready';
@@ -401,6 +450,45 @@ export default function App() {
     ]);
   };
 
+  const buildAnalyzePayload = () => ({
+    observation_id: `${selected.zone.toLowerCase().replace(' ', '-')}-${selected.id}`,
+    worker_id: 'worker-07',
+    crop: selected.crop,
+    zone: selected.zone,
+    capture_source: 'web_upload',
+    upload_filename: uploadedImage.name,
+    upload_size_bytes: uploadedImage.size,
+    upload_mime_type: uploadedImage.type,
+    report_channel: 'typed_report_voice_stand_in',
+    wearer_note: operatorReport,
+    image_data_url: uploadedImage.uri,
+  });
+
+  const queueDeferredAnalysis = (payload, errorMessage) => {
+    const record = {
+      queue_id: `queued-${Date.now()}`,
+      fixture_id: selected.id,
+      observation_id: payload.observation_id,
+      crop: payload.crop,
+      zone: payload.zone,
+      upload_filename: payload.upload_filename,
+      upload_size_bytes: payload.upload_size_bytes,
+      upload_mime_type: payload.upload_mime_type,
+      image_data_url: payload.image_data_url,
+      wearer_note: payload.wearer_note,
+      local_created_at: new Date().toISOString(),
+      queue_status: 'needs_connectivity',
+      provider_attempts: 1,
+      last_error: errorMessage,
+      next_retry_at: new Date(Date.now() + 60_000).toISOString(),
+    };
+
+    setDeferredRecords((records) => [
+      record,
+      ...records.filter((item) => item.observation_id !== record.observation_id),
+    ].slice(0, 12));
+  };
+
   const capture = () => {
     setStage('captured');
     setModelObservation(null);
@@ -430,21 +518,73 @@ export default function App() {
     ]);
 
     try {
+      const analyzePayload = buildAnalyzePayload();
+      const response = await fetch(MODEL_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(analyzePayload),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || `Model server returned ${response.status}`);
+      }
+
+      setModelObservation(payload.observation);
+      setModelStatus('done');
+      setStage('identified');
+      setDeferredRecords((records) => records.filter((item) => item.observation_id !== payload.observation.observation_id));
+      setHistory((items) => [
+        `Vision model result: ${payload.observation.possible_disease}, ${payload.observation.confidence} confidence.`,
+        ...items,
+      ]);
+    } catch (error) {
+      setModelStatus('error');
+      setModelError(error.message);
+      setStage('captured');
+      queueDeferredAnalysis(buildAnalyzePayload(), error.message);
+      setHistory((items) => [
+        `Vision model failed: ${error.message}. Capture was queued locally for retry.`,
+        ...items,
+      ]);
+    }
+  };
+
+  const retryDeferredAnalysis = async () => {
+    if (!retryableRecord) return;
+
+    setSelectedId(retryableRecord.fixture_id);
+    setReportText(retryableRecord.wearer_note || '');
+    setUploadedImage({
+      name: retryableRecord.upload_filename,
+      size: retryableRecord.upload_size_bytes,
+      type: retryableRecord.upload_mime_type,
+      uri: retryableRecord.image_data_url,
+    });
+    setStage('captured');
+    setModelStatus('running');
+    setModelError(null);
+    setDeferredRecords((records) => records.map((record) => (
+      record.queue_id === retryableRecord.queue_id
+        ? { ...record, queue_status: 'processing', provider_attempts: record.provider_attempts + 1 }
+        : record
+    )));
+
+    try {
       const response = await fetch(MODEL_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          observation_id: `${selected.zone.toLowerCase().replace(' ', '-')}-${selected.id}`,
+          observation_id: retryableRecord.observation_id,
           worker_id: 'worker-07',
-          crop: selected.crop,
-          zone: selected.zone,
+          crop: retryableRecord.crop,
+          zone: retryableRecord.zone,
           capture_source: 'web_upload',
-          upload_filename: uploadedImage.name,
-          upload_size_bytes: uploadedImage.size,
-          upload_mime_type: uploadedImage.type,
+          upload_filename: retryableRecord.upload_filename,
+          upload_size_bytes: retryableRecord.upload_size_bytes,
+          upload_mime_type: retryableRecord.upload_mime_type,
           report_channel: 'typed_report_voice_stand_in',
-          wearer_note: operatorReport,
-          image_data_url: uploadedImage.uri,
+          wearer_note: retryableRecord.wearer_note,
+          image_data_url: retryableRecord.image_data_url,
         }),
       });
       const payload = await response.json().catch(() => ({}));
@@ -455,16 +595,31 @@ export default function App() {
       setModelObservation(payload.observation);
       setModelStatus('done');
       setStage('identified');
+      setDeferredRecords((records) => records.map((record) => (
+        record.queue_id === retryableRecord.queue_id
+          ? { ...record, queue_status: 'done', last_error: null, completed_at: new Date().toISOString() }
+          : record
+      )));
       setHistory((items) => [
-        `Vision model result: ${payload.observation.possible_disease}, ${payload.observation.confidence} confidence.`,
+        `Queued capture processed: ${payload.observation.possible_disease}, ${payload.observation.confidence} confidence.`,
         ...items,
       ]);
     } catch (error) {
       setModelStatus('error');
       setModelError(error.message);
       setStage('captured');
+      setDeferredRecords((records) => records.map((record) => (
+        record.queue_id === retryableRecord.queue_id
+          ? {
+              ...record,
+              queue_status: 'failed',
+              last_error: error.message,
+              next_retry_at: new Date(Date.now() + 60_000).toISOString(),
+            }
+          : record
+      )));
       setHistory((items) => [
-        `Vision model failed: ${error.message}`,
+        `Queued capture retry failed: ${error.message}`,
         ...items,
       ]);
     }
@@ -524,7 +679,7 @@ export default function App() {
         </View>
 
         <View style={styles.grid}>
-          <View style={styles.panel}>
+          <View style={panelStyle}>
             <Text style={styles.panelTitle}>Plant stations</Text>
             <Text style={styles.panelHint}>Use real plants or greenhouse samples. The simulator treats each station as a deterministic fixture.</Text>
             {fixtures.map((fixture) => (
@@ -544,7 +699,7 @@ export default function App() {
             <ActionButton label="Reset demo run" onPress={clearRun} variant="secondary" />
           </View>
 
-          <View style={styles.panel}>
+          <View style={panelStyle}>
             <Text style={styles.panelTitle}>Glasses view</Text>
             <View style={styles.cameraMeta}>
               <Text style={styles.cameraMetaText}>Selected: {selected.zone}</Text>
@@ -600,7 +755,7 @@ export default function App() {
               <Text style={styles.commandText}>1. Active glasses session captures the worker POV</Text>
               <Text style={styles.commandText}>2. "What disease might this be?" calls the local vision backend</Text>
               <Text style={styles.commandText}>3. "Why?"</Text>
-              <Text style={styles.reportMeta}>Model: {modelObservation?.model_name ?? 'OpenAI vision proxy on localhost:8787'}</Text>
+              <Text style={styles.reportMeta}>Model: {modelObservation?.model_name ?? 'vision proxy on configured host'}</Text>
               {modelStatus === 'running' ? (
                 <Text style={styles.commandCaution}>Analyzing uploaded image...</Text>
               ) : null}
@@ -608,6 +763,25 @@ export default function App() {
                 <Text style={styles.commandCaution}>{modelError}</Text>
               ) : null}
               <Text style={styles.commandCaution}>Camera-button auto-launch remains a device test, not a claim.</Text>
+            </View>
+            <View style={styles.commandBox}>
+              <Text style={styles.commandTitle}>Deferred processing</Text>
+              <Text style={styles.commandText}>
+                {deferredRecords.length === 0
+                  ? 'No queued captures. Uploaded evidence will be saved locally if analysis is unavailable.'
+                  : `${deferredRecords.filter((record) => record.queue_status !== 'done').length} queued capture(s), ${deferredRecords.filter((record) => record.queue_status === 'done').length} completed.`}
+              </Text>
+              {retryableRecord ? (
+                <Text style={styles.commandCaution}>
+                  {retryableRecord.queue_status}: {retryableRecord.last_error}
+                </Text>
+              ) : null}
+              <ActionButton
+                disabled={!retryableRecord || modelStatus === 'running'}
+                label="Retry queued analysis"
+                onPress={retryDeferredAnalysis}
+                variant="secondary"
+              />
             </View>
             <View style={styles.buttonStack}>
               <ActionButton disabled={stage !== 'ready' || !operatorReport} label="Trigger capture" onPress={capture} />
@@ -621,7 +795,7 @@ export default function App() {
             </View>
           </View>
 
-          <View style={styles.panel}>
+          <View style={panelStyle}>
             <Text style={styles.panelTitle}>Scout assessment</Text>
             <View
               style={[
@@ -678,7 +852,7 @@ export default function App() {
             </View>
           </View>
 
-          <View style={styles.panel}>
+          <View style={panelStyle}>
             <Text style={styles.panelTitle}>Supervisor packet</Text>
             <View style={styles.packet}>
               <Text style={styles.packetTitle}>{stage === 'packet' ? 'Ready for review' : 'Draft packet'}</Text>
@@ -706,7 +880,7 @@ export default function App() {
             </View>
           </View>
 
-          <View style={styles.panel}>
+          <View style={panelStyle}>
             <Text style={styles.panelTitle}>Output verifier</Text>
             <View style={styles.scoreBox}>
               <Text style={styles.scoreValue}>{verificationPassed}/{verificationChecks.length}</Text>
@@ -717,12 +891,12 @@ export default function App() {
             ))}
           </View>
 
-          <View style={[styles.panel, styles.jsonPanel]}>
+          <View style={[styles.panel, widePanelLayoutStyle, styles.jsonPanel]}>
             <Text style={styles.panelTitle}>DiseaseScoutObservation JSON</Text>
             <Text style={styles.codeText}>{JSON.stringify(observation, null, 2)}</Text>
           </View>
 
-          <View style={styles.panel}>
+          <View style={panelStyle}>
             <Text style={styles.panelTitle}>Run log</Text>
             {history.length === 0 ? (
               <Text style={styles.panelHint}>No events yet. Start with the camera trigger.</Text>
@@ -744,13 +918,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.paper,
   },
   page: {
-    padding: 18,
+    width: '100%',
+    maxWidth: 1440,
+    alignSelf: 'center',
+    padding: 14,
     gap: 12,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexWrap: 'wrap',
     gap: 12,
     backgroundColor: colors.panel,
     borderColor: colors.rule,
@@ -832,6 +1010,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 14,
+    alignItems: 'flex-start',
   },
   panel: {
     backgroundColor: colors.panel,
@@ -839,13 +1018,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     padding: 15,
-    width: '32%',
-    minWidth: 320,
+    minWidth: 0,
+    flexGrow: 1,
     gap: 10,
   },
   jsonPanel: {
-    width: '49%',
-    minWidth: 420,
+    backgroundColor: colors.panel,
   },
   panelTitle: {
     color: colors.ink,

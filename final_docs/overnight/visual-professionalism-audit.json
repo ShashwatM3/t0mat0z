@@ -1,0 +1,84 @@
+﻿{
+    "generated_at":  "2026-05-16T09:17:19.9066819-07:00",
+    "status":  "pass",
+    "verdict":  "demo_visuals_not_obviously_broken",
+    "screenshot_count":  5,
+    "failed_count":  0,
+    "checks":  [
+                   "required demo screenshots exist",
+                   "screenshot widths match target viewports",
+                   "screenshot heights cover target viewports",
+                   "screenshots are fresh within the current run window",
+                   "sampled pixels are nonblank and visually varied"
+               ],
+    "screenshots":  [
+                        {
+                            "name":  "desktop",
+                            "path":  "final_docs/overnight/baseline-desktop.png",
+                            "ok":  true,
+                            "width":  1440,
+                            "height":  1000,
+                            "size_bytes":  99263,
+                            "last_write_time":  "2026-05-16T09:17:13.6400721-07:00",
+                            "unique_sample_colors":  80,
+                            "non_white_sample_ratio":  0.7625,
+                            "brightness_range":  219.34,
+                            "issue":  null
+                        },
+                        {
+                            "name":  "mobile-390",
+                            "path":  "final_docs/overnight/baseline-mobile-390.png",
+                            "ok":  true,
+                            "width":  390,
+                            "height":  844,
+                            "size_bytes":  33355,
+                            "last_write_time":  "2026-05-16T09:17:15.0581200-07:00",
+                            "unique_sample_colors":  81,
+                            "non_white_sample_ratio":  0.6037,
+                            "brightness_range":  219.34,
+                            "issue":  null
+                        },
+                        {
+                            "name":  "mobile-360",
+                            "path":  "final_docs/overnight/baseline-mobile-360.png",
+                            "ok":  true,
+                            "width":  360,
+                            "height":  740,
+                            "size_bytes":  28603,
+                            "last_write_time":  "2026-05-16T09:17:16.5997149-07:00",
+                            "unique_sample_colors":  117,
+                            "non_white_sample_ratio":  0.6031,
+                            "brightness_range":  219.34,
+                            "issue":  null
+                        },
+                        {
+                            "name":  "display-600",
+                            "path":  "final_docs/overnight/baseline-display-600.png",
+                            "ok":  true,
+                            "width":  600,
+                            "height":  600,
+                            "size_bytes":  28156,
+                            "last_write_time":  "2026-05-16T09:17:18.1167815-07:00",
+                            "unique_sample_colors":  63,
+                            "non_white_sample_ratio":  0.592,
+                            "brightness_range":  219.34,
+                            "issue":  null
+                        },
+                        {
+                            "name":  "live-ui-upload",
+                            "path":  "final_docs/overnight/live-ui-upload-smoke.png",
+                            "ok":  true,
+                            "width":  1440,
+                            "height":  1000,
+                            "size_bytes":  270818,
+                            "last_write_time":  "2026-05-16T07:14:40.2552150-07:00",
+                            "unique_sample_colors":  209,
+                            "non_white_sample_ratio":  0.7462,
+                            "brightness_range":  224.4,
+                            "issue":  null
+                        }
+                    ],
+    "warnings":  [
+                     "This is an automated screenshot integrity and layout-risk audit, not a substitute for human taste review."
+                 ]
+}

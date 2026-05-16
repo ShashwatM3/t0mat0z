@@ -26,9 +26,15 @@ npm-debug.*
 yarn-debug.*
 yarn-error.*
 app/ai-server*.log
+app/test-results/
 
 # generated verifier datasets and reports
 data/
+
+# generated demo run state
+final_docs/overnight/*.log
+final_docs/overnight/overnight-heartbeat.json
+prototype/
 
 # macOS
 .DS_Store
@@ -57,6 +63,10 @@ CLAUDE.md
 *.mobileprovision
 *.sqlite
 *.db
+
+# Python/cache artifacts
+__pycache__/
+*.py[cod]
 
 # typescript
 *.tsbuildinfo

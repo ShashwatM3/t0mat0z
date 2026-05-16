@@ -1,0 +1,195 @@
+﻿{
+    "generated_at":  "2026-05-16T05:32:35.3093177-07:00",
+    "status":  "warn",
+    "web":  {
+                "ok":  true,
+                "url":  "http://localhost:19006",
+                "status_code":  200,
+                "elapsed_ms":  48,
+                "length":  1271,
+                "error":  null
+            },
+    "backend_health":  {
+                           "ok":  true,
+                           "url":  "http://localhost:8787/health",
+                           "elapsed_ms":  78,
+                           "body":  {
+                                        "ok":  true,
+                                        "provider":  "codex-cli",
+                                        "supported_providers":  [
+                                                                    "codex-cli",
+                                                                    "openai",
+                                                                    "gemini"
+                                                                ],
+                                        "api_model":  "gpt-4.1-mini",
+                                        "codex_model":  "gpt-5.5",
+                                        "codex_reasoning_effort":  "low",
+                                        "gemini_model":  "gemini-2.5-flash-lite",
+                                        "has_api_key":  false,
+                                        "has_gemini_key":  false
+                                    },
+                           "error":  null
+                       },
+    "live_ui_upload":  {
+                           "ok":  true,
+                           "image":  "disease_scout_blind_09.jpg",
+                           "model":  "codex-cli:gpt-5.5:low",
+                           "confidence":  "low",
+                           "no_treatment_advice":  true,
+                           "screenshot":  "final_docs/overnight/live-ui-upload-smoke.png"
+                       },
+    "live_model_smoke_ok":  true,
+    "live_model_diversity_ok":  true,
+    "visual_professionalism":  {
+                                   "ok":  true,
+                                   "status":  "pass",
+                                   "verdict":  "demo_visuals_not_obviously_broken",
+                                   "screenshot_count":  5,
+                                   "failed_count":  0
+                               },
+    "latency_demo":  {
+                         "ok":  true,
+                         "status":  "pass",
+                         "max_model_latency_ms":  14227,
+                         "average_model_latency_ms":  11860,
+                         "max_service_latency_ms":  77,
+                         "fallback":  "If a live model call stalls during judging, show live-model-diversity-smoke.json, live-ui-upload-smoke.png, and demo-day-status.md first, then retry the live upload."
+                     },
+    "network_status":  "warn",
+    "recommended_route":  {
+                              "web_url":  "http://100.127.164.111:19006",
+                              "api_health_url":  "http://100.127.164.111:8787/health",
+                              "expo_public_disease_scout_api_url":  "http://100.127.164.111:8787/api/scout/analyze",
+                              "same_host_inferred_analyze_url":  "http://100.127.164.111:8787/api/scout/analyze",
+                              "route_type":  "tailscale"
+                          },
+    "dogbot_manifest":  {
+                            "ok":  true,
+                            "message_count":  44,
+                            "screenshot_count":  14,
+                            "latest_experiment":  "T999-visible-20260516-052548",
+                            "latest_message_id":  "1505184711658705006"
+                        },
+    "dogbot_live_audit":  {
+                              "under_project_control":  true,
+                              "receipt_count":  44,
+                              "flagged_count":  0,
+                              "source":  "artifact"
+                          },
+    "morning_audit":  {
+                          "path":  "docs/goals/disease-scout-overnight-experiment-control/notes/morning-audit.md",
+                          "exists":  false,
+                          "pending_until":  "2026-05-16T10:00:00.0000000-07:00"
+                      },
+    "artifacts":  [
+                      {
+                          "path":  "final_docs/overnight/demo-operator-card.md",
+                          "exists":  true,
+                          "size_bytes":  3998,
+                          "last_write_time":  "2026-05-16T04:34:19.5551579-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/demo-day-proof-packet.md",
+                          "exists":  true,
+                          "size_bytes":  7177,
+                          "last_write_time":  "2026-05-16T04:34:29.7314352-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/baseline-desktop.png",
+                          "exists":  true,
+                          "size_bytes":  100197,
+                          "last_write_time":  "2026-05-16T05:26:30.7050807-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/baseline-mobile-390.png",
+                          "exists":  true,
+                          "size_bytes":  34509,
+                          "last_write_time":  "2026-05-16T05:26:31.9797490-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/baseline-display-600.png",
+                          "exists":  true,
+                          "size_bytes":  29001,
+                          "last_write_time":  "2026-05-16T05:26:34.6303039-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/visual-professionalism-audit.json",
+                          "exists":  true,
+                          "size_bytes":  4213,
+                          "last_write_time":  "2026-05-16T05:26:36.4346284-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/visual-professionalism-audit.md",
+                          "exists":  true,
+                          "size_bytes":  874,
+                          "last_write_time":  "2026-05-16T05:26:36.4570702-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/latency-demo-audit.json",
+                          "exists":  true,
+                          "size_bytes":  2650,
+                          "last_write_time":  "2026-05-16T05:26:38.8137600-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/latency-demo-audit.md",
+                          "exists":  true,
+                          "size_bytes":  926,
+                          "last_write_time":  "2026-05-16T05:26:38.8265893-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/live-model-smoke.json",
+                          "exists":  true,
+                          "size_bytes":  4384,
+                          "last_write_time":  "2026-05-16T03:48:40.6559572-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/live-model-diversity-smoke.json",
+                          "exists":  true,
+                          "size_bytes":  15669,
+                          "last_write_time":  "2026-05-16T03:51:30.6726572-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/live-ui-upload-smoke.json",
+                          "exists":  true,
+                          "size_bytes":  2630,
+                          "last_write_time":  "2026-05-16T03:15:49.6105314-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/live-ui-upload-smoke.png",
+                          "exists":  true,
+                          "size_bytes":  274636,
+                          "last_write_time":  "2026-05-16T03:15:49.6017504-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/network-preflight-latest.json",
+                          "exists":  true,
+                          "size_bytes":  7495,
+                          "last_write_time":  "2026-05-16T05:26:38.3883989-07:00"
+                      },
+                      {
+                          "path":  "final_docs/overnight/visible-holdout-score-latest.md",
+                          "exists":  true,
+                          "size_bytes":  11343,
+                          "last_write_time":  "2026-05-16T05:26:39.4903080-07:00"
+                      },
+                      {
+                          "path":  "final_docs/android-dat-checklist.md",
+                          "exists":  true,
+                          "size_bytes":  4117,
+                          "last_write_time":  "2026-05-16T02:35:13.7675627-07:00"
+                      },
+                      {
+                          "path":  "final_docs/discord-experiment-manifest.json",
+                          "exists":  true,
+                          "size_bytes":  16385,
+                          "last_write_time":  "2026-05-16T05:26:41.4490786-07:00"
+                      }
+                  ],
+    "blockers":  [
+
+                 ],
+    "warnings":  [
+                     "Network preflight has warnings: Only non-private-LAN candidates responded to /health. If this is a Tailscale address, the phone must also be on Tailscale; venue Wi-Fi still needs a separate check.",
+                     "Morning audit is pending until 10:00 AM."
+                 ]
+}

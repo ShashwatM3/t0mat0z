@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-05-16T14:14:40.266Z",
+  "status": "pass",
+  "web_url": "http://localhost:19006",
+  "image_filename": "disease_scout_blind_09.jpg",
+  "image_size_bytes": 68432,
+  "report_text": "yellowing and spots on lower leaves",
+  "response_status": 200,
+  "response_url": "http://localhost:8787/api/scout/analyze",
+  "screenshot": "final_docs/overnight/live-ui-upload-smoke.png",
+  "observation": {
+    "observation_id": "zone-b-zone-b-suspicious",
+    "worker_id": "worker-07",
+    "crop": "tomato",
+    "zone": "Zone B",
+    "image_uri": "web-upload://disease_scout_blind_09.jpg",
+    "capture_source": "web_upload",
+    "upload_filename": "disease_scout_blind_09.jpg",
+    "upload_size_bytes": 68432,
+    "upload_mime_type": "image/jpeg",
+    "report_channel": "typed_report_voice_stand_in",
+    "wearer_note": "yellowing and spots on lower leaves",
+    "possible_disease": "Possible leaf spot or nutrient/stress-related chlorosis; not enough evidence for a specific disease ID",
+    "confidence": "low",
+    "limitation_flags": [
+      "single_view_only",
+      "underside_missing",
+      "no_healthy_comparison",
+      "model_uncertain"
+    ],
+    "evidence_quality": "Single above-leaf view shows yellow mottling/spotting on tomato foliage, but no close-up of lesions, underside, pattern across plant, or healthy comparison.",
+    "next_check": "Capture a close-up of one affected lower leaf plus the underside, keeping one healthy-looking leaf in the same frame for comparison.",
+    "supervisor_action": "Review additional close-up/underside images before assigning a disease label.",
+    "review_status": "supervisor_review",
+    "treatment_recommendation": null,
+    "finding_why": "Visible tomato leaves show irregular yellow chlorotic mottling and spots, mostly on mature leaves, without clear necrotic lesion edges or pathogen signs in this view.",
+    "broad_state": "disease_like",
+    "visible_symptoms": [
+      "yellow chlorotic mottling",
+      "irregular pale spots",
+      "lower-leaf yellowing noted by worker"
+    ],
+    "send_status": "not_sent_demo_only",
+    "analysis_source": "codex_cli_subscription_vision",
+    "model_name": "codex-cli:gpt-5.5:low",
+    "model_latency_ms": 11115
+  },
+  "checks": {
+    "browser_upload_reached_backend": true,
+    "capture_source_web_upload": true,
+    "upload_filename_preserved": true,
+    "report_preserved": true,
+    "uncertainty_visible": true,
+    "next_check_exists": true,
+    "no_treatment_advice": true,
+    "supervisor_packet_visible": true,
+    "body_text_length": 5308,
+    "treatment_words_visible": false
+  }
+}

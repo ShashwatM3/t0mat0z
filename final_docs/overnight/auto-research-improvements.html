@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Disease Scout Auto Research Improvements</title>
+  <style>
+    :root {
+      --paper: #f7f4ee;
+      --ink: #242321;
+      --muted: #69635b;
+      --line: #c9c0b4;
+      --panel: #fffdf8;
+      --panel-2: #ece7df;
+      --good: #226c49;
+      --warn: #9a6427;
+      --risk: #8d2f2f;
+      --steel: #2e5266;
+      --olive: #556b2f;
+      --gold: #b48738;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.45;
+    }
+
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 32px 24px 56px;
+    }
+
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+    }
+
+    h1, h2, h3, .stat-value, .label {
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 0.96;
+      margin: 0;
+      max-width: 780px;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      margin: 0 0 14px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+
+    p { margin: 0 0 12px; }
+
+    .subtitle {
+      font-size: 1.05rem;
+      max-width: 760px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .status-card {
+      min-width: 260px;
+      border: 1px solid var(--ink);
+      background: var(--panel);
+      padding: 14px;
+    }
+
+    .status-pill {
+      display: inline-block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border: 1px solid var(--warn);
+      color: var(--warn);
+      margin-bottom: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .span-12 { grid-column: span 12; }
+    .span-8 { grid-column: span 8; }
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      border-left: 5px solid var(--steel);
+      background: var(--panel-2);
+      padding: 12px 14px;
+      min-height: 92px;
+    }
+
+    .stat.good { border-color: var(--good); }
+    .stat.warn { border-color: var(--warn); }
+    .stat.gold { border-color: var(--gold); }
+
+    .stat-value {
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .compare > div {
+      padding: 14px;
+      background: var(--panel);
+    }
+
+    .compare > div:first-child {
+      border-right: 1px solid var(--line);
+      background: #f1ece4;
+    }
+
+    ul {
+      margin: 8px 0 0 18px;
+      padding: 0;
+    }
+
+    li { margin: 6px 0; }
+
+    .flow {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    svg text {
+      font-family: Arial, Helvetica, sans-serif;
+      fill: var(--ink);
+    }
+
+    .timeline {
+      border-left: 3px solid var(--ink);
+      margin-left: 8px;
+      padding-left: 18px;
+    }
+
+    .event {
+      position: relative;
+      margin: 0 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .event::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      background: var(--paper);
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+    }
+
+    .event time {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 9px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .path {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.82rem;
+      word-break: break-word;
+    }
+
+    .callout {
+      border-left: 6px solid var(--good);
+      background: #eef5ef;
+      padding: 14px;
+      margin-top: 12px;
+    }
+
+    .risk {
+      border-left-color: var(--risk);
+      background: #f6eeee;
+    }
+
+    .screenshot {
+      width: 100%;
+      border: 1px solid var(--ink);
+      background: #ddd;
+      display: block;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 900px) {
+      header { grid-template-columns: 1fr; }
+      .span-8, .span-6, .span-4 { grid-column: span 12; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .compare { grid-template-columns: 1fr; }
+      .compare > div:first-child {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page { padding: 20px 14px 40px; }
+      .stats { grid-template-columns: 1fr; }
+      h1 { font-size: 2.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <div class="label">AIFS x Meta Wearables Hackathon</div>
+        <h1>Disease Scout auto research improvements</h1>
+        <p class="subtitle">What actually changed overnight: static demo risk turned into a live evidence-memory workflow with receipts, tests, verifier failures, and a clearer demo packet.</p>
+      </div>
+      <aside class="status-card">
+        <div class="status-pill">Status: warn, not complete</div>
+        <p><strong>Captured:</strong> 2026-05-16 09:25 PT</p>
+        <p><strong>Why warn:</strong> controller was stopped before 10:00 audit; venue Wi-Fi route is not proven.</p>
+      </aside>
+    </header>
+
+    <section class="grid">
+      <div class="panel span-12">
+        <h2>Executive Read</h2>
+        <div class="stats">
+          <div class="stat good">
+            <div class="stat-value">51</div>
+            <div class="label">Dogbot receipts in Project Control</div>
+          </div>
+          <div class="stat good">
+            <div class="stat-value">0</div>
+            <div class="label">Pending or flagged receipts</div>
+          </div>
+          <div class="stat gold">
+            <div class="stat-value">306</div>
+            <div class="label">Holdout verifier rows</div>
+          </div>
+          <div class="stat warn">
+            <div class="stat-value">2</div>
+            <div class="label">Remaining demo warnings</div>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>Main improvement:</strong> The project is no longer just "AI glasses identify a plant." It is now a judge-visible field evidence memory system: capture image, preserve worker note, return uncertainty, ask for missing evidence, and produce a supervisor-review packet.
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel span-8">
+        <h2>Workflow Graph</h2>
+        <div class="flow">
+          <svg viewBox="0 0 980 320" role="img" aria-label="Disease Scout improvement graph">
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#242321"></path>
+              </marker>
+            </defs>
+            <rect x="20" y="42" width="150" height="72" fill="#ece7df" stroke="#242321"></rect>
+            <text x="95" y="72" text-anchor="middle" font-size="17" font-weight="700">Worker POV</text>
+            <text x="95" y="96" text-anchor="middle" font-size="13">image + note</text>
+
+            <rect x="220" y="42" width="150" height="72" fill="#fffdf8" stroke="#242321"></rect>
+            <text x="295" y="69" text-anchor="middle" font-size="17" font-weight="700">Web Capture</text>
+            <text x="295" y="94" text-anchor="middle" font-size="13">deferred queue</text>
+
+            <rect x="420" y="42" width="150" height="72" fill="#fffdf8" stroke="#242321"></rect>
+            <text x="495" y="69" text-anchor="middle" font-size="17" font-weight="700">Model Bridge</text>
+            <text x="495" y="94" text-anchor="middle" font-size="13">Codex / OpenAI / Gemini</text>
+
+            <rect x="620" y="42" width="150" height="72" fill="#fffdf8" stroke="#242321"></rect>
+            <text x="695" y="69" text-anchor="middle" font-size="17" font-weight="700">Scout Record</text>
+            <text x="695" y="94" text-anchor="middle" font-size="13">limits + next check</text>
+
+            <rect x="820" y="42" width="140" height="72" fill="#eef5ef" stroke="#226c49"></rect>
+            <text x="890" y="69" text-anchor="middle" font-size="17" font-weight="700">Proof Packet</text>
+            <text x="890" y="94" text-anchor="middle" font-size="13">judge-inspectable</text>
+
+            <line x1="170" y1="78" x2="220" y2="78" stroke="#242321" stroke-width="2" marker-end="url(#arrow)"></line>
+            <line x1="370" y1="78" x2="420" y2="78" stroke="#242321" stroke-width="2" marker-end="url(#arrow)"></line>
+            <line x1="570" y1="78" x2="620" y2="78" stroke="#242321" stroke-width="2" marker-end="url(#arrow)"></line>
+            <line x1="770" y1="78" x2="820" y2="78" stroke="#242321" stroke-width="2" marker-end="url(#arrow)"></line>
+
+            <rect x="90" y="172" width="170" height="82" fill="#f6eeee" stroke="#8d2f2f"></rect>
+            <text x="175" y="202" text-anchor="middle" font-size="16" font-weight="700">Before</text>
+            <text x="175" y="226" text-anchor="middle" font-size="13">static answer risk</text>
+
+            <rect x="310" y="172" width="170" height="82" fill="#eef5ef" stroke="#226c49"></rect>
+            <text x="395" y="200" text-anchor="middle" font-size="16" font-weight="700">Live Smoke</text>
+            <text x="395" y="224" text-anchor="middle" font-size="13">gpt-5.5 bridge</text>
+
+            <rect x="530" y="172" width="170" height="82" fill="#eef5ef" stroke="#226c49"></rect>
+            <text x="615" y="200" text-anchor="middle" font-size="16" font-weight="700">Verifier</text>
+            <text x="615" y="224" text-anchor="middle" font-size="13">306 rows, failures visible</text>
+
+            <rect x="750" y="172" width="170" height="82" fill="#eef5ef" stroke="#226c49"></rect>
+            <text x="835" y="200" text-anchor="middle" font-size="16" font-weight="700">Discord Receipts</text>
+            <text x="835" y="224" text-anchor="middle" font-size="13">51 messages, 0 pending</text>
+
+            <line x1="260" y1="213" x2="310" y2="213" stroke="#242321" stroke-width="2" marker-end="url(#arrow)"></line>
+            <line x1="480" y1="213" x2="530" y2="213" stroke="#242321" stroke-width="2" marker-end="url(#arrow)"></line>
+            <line x1="700" y1="213" x2="750" y2="213" stroke="#242321" stroke-width="2" marker-end="url(#arrow)"></line>
+          </svg>
+        </div>
+        <p class="caption">The research loop improved the proof chain, not just the UI. The strongest output is an inspectable scout record with explicit uncertainty.</p>
+      </div>
+
+      <div class="panel span-4">
+        <h2>Timeline</h2>
+        <div class="timeline">
+          <div class="event">
+            <time>01:27</time>
+            <strong>Initial experiment receipts landed.</strong>
+            Dogbot manifest begins with T003 through T008 and baseline screenshots.
+          </div>
+          <div class="event">
+            <time>02:14 - 03:16</time>
+            <strong>Live model and upload smokes started passing.</strong>
+            The system proved image-dependent model calls and UI upload behavior.
+          </div>
+          <div class="event">
+            <time>04:35 - 05:11</time>
+            <strong>Latency and final gate checks landed.</strong>
+            Demo fallback path documented for slow live calls.
+          </div>
+          <div class="event">
+            <time>09:16 - 09:17</time>
+            <strong>Dogbot auth recovered.</strong>
+            Queued receipts flushed, live receipt posted, Project Control audit passed.
+          </div>
+          <div class="event">
+            <time>09:19</time>
+            <strong>Demo status refreshed.</strong>
+            Status is warn with 0 blockers and 2 warnings.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel span-6">
+        <h2>Before</h2>
+        <ul>
+          <li>Upload flow risked feeling static or hardcoded.</li>
+          <li>Meta integration story was abstract and not testable today.</li>
+          <li>No clear proof that Discord project control received results.</li>
+          <li>No durable verifier making cheating or hidden failures difficult.</li>
+          <li>No polished proof packet for judges to inspect.</li>
+          <li>No simple provider swap path for free Gemini API testing.</li>
+        </ul>
+      </div>
+
+      <div class="panel span-6">
+        <h2>After</h2>
+        <ul>
+          <li>Live UI upload smoke uses `codex-cli:gpt-5.5:low`.</li>
+          <li>Backend supports `codex-cli`, `openai`, and `gemini` providers.</li>
+          <li>Dogbot has 51 receipts under Project Control and 0 pending queue.</li>
+          <li>Holdout verifier ran 306 rows and keeps failures visible.</li>
+          <li>Visual audit passed with 5 screenshots and 0 failed checks.</li>
+          <li>Demo-day status, operator card, proof packet, and network preflight now exist.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel span-8">
+        <h2>Verifier Results</h2>
+        <table>
+          <thead>
+            <tr><th>Check</th><th>Latest Result</th><th>Meaning</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Schema</td><td>100.0%</td><td>Outputs are structurally valid for review packets.</td></tr>
+            <tr><td>Limitations named</td><td>100.0%</td><td>The model consistently states evidence limits.</td></tr>
+            <tr><td>Next check exists</td><td>100.0%</td><td>The workflow pushes a useful field action instead of stopping at diagnosis.</td></tr>
+            <tr><td>No treatment advice</td><td>100.0%</td><td>It avoids overclaiming field treatment decisions.</td></tr>
+            <tr><td>Broad state</td><td>80.7%</td><td>Useful but not strong enough to claim field-grade plant health classification.</td></tr>
+            <tr><td>Bad recapture behavior</td><td>83.3%</td><td>Better than before, still needs tightening around low-quality captures.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel span-4">
+        <h2>Current Warnings</h2>
+        <div class="callout risk">
+          <p><strong>Not complete:</strong> The 10:00 morning audit did not run because the controller was stopped manually.</p>
+          <p><strong>Network risk:</strong> Tailscale-style route responded, but venue Wi-Fi and phone route still need live confirmation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel span-6">
+        <h2>Proof Screenshot</h2>
+        <img class="screenshot" src="live-ui-upload-smoke.png" alt="Live UI upload smoke screenshot">
+        <p class="caption">Live upload smoke screenshot. This is the user-visible proof path for image upload plus model output.</p>
+      </div>
+      <div class="panel span-6">
+        <h2>Competition Story</h2>
+        <p><strong>Disease Scout is field evidence memory for plant disease scouting.</strong></p>
+        <p>The glasses-shaped value is not perfect diagnosis. It is hands-free capture, structured uncertainty, missing-evidence prompts, and supervisor-review packets that make field observations auditable.</p>
+        <p>That makes the demo stronger because judges can inspect wearer action, image evidence, worker note, model uncertainty, next check, screenshots, Discord receipts, and verifier failures.</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel span-12">
+        <h2>Artifact Receipts</h2>
+        <table>
+          <thead>
+            <tr><th>Lane</th><th>Receipt</th><th>What it proves</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Demo status</td><td class="path">final_docs/overnight/demo-day-status.md</td><td>Current run state and warnings.</td></tr>
+            <tr><td>Ready check</td><td class="path">final_docs/overnight/demo-ready-check.json</td><td>Web, backend, Dogbot, visual, latency, network, and artifact checks.</td></tr>
+            <tr><td>Model bridge</td><td class="path">final_docs/overnight/live-model-smoke.json</td><td>Live model call through the current bridge.</td></tr>
+            <tr><td>Diversity</td><td class="path">final_docs/overnight/live-model-diversity-smoke.json</td><td>Different images produced different response signatures.</td></tr>
+            <tr><td>UI upload</td><td class="path">final_docs/overnight/live-ui-upload-smoke.json</td><td>Browser upload path works against the live backend.</td></tr>
+            <tr><td>Verifier</td><td class="path">final_docs/overnight/visible-holdout-score-latest.md</td><td>Holdout scores and failure samples are visible.</td></tr>
+            <tr><td>Discord control</td><td class="path">final_docs/discord-experiment-manifest.json</td><td>51 logged experiment receipts.</td></tr>
+            <tr><td>Reaction audit</td><td class="path">final_docs/overnight/dogbot-reaction-audit.json</td><td>Receipts are under Project Control; flagged count is 0.</td></tr>
+            <tr><td>Visual quality</td><td class="path">final_docs/overnight/visual-professionalism-audit.md</td><td>Five screenshots passed visible quality checks.</td></tr>
+            <tr><td>Latency</td><td class="path">final_docs/overnight/latency-demo-audit.md</td><td>Live model timing and fallback path.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

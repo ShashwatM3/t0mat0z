@@ -1,0 +1,183 @@
+﻿{
+    "generated_at":  "2026-05-16T06:41:53.7445244-07:00",
+    "status":  "pass",
+    "elapsed_ms":  36565,
+    "endpoint":  "http://localhost:8787/api/scout/analyze",
+    "provider_health":  {
+                            "ok":  true,
+                            "provider":  "codex-cli",
+                            "supported_providers":  [
+                                                        "codex-cli",
+                                                        "openai",
+                                                        "gemini"
+                                                    ],
+                            "api_model":  "gpt-4.1-mini",
+                            "codex_model":  "gpt-5.5",
+                            "codex_reasoning_effort":  "low",
+                            "gemini_model":  "gemini-2.5-flash-lite",
+                            "has_api_key":  false,
+                            "has_gemini_key":  false
+                        },
+    "sample_count":  3,
+    "unique_response_signatures":  3,
+    "unique_possible_diseases":  3,
+    "unique_broad_states":  2,
+    "treatment_advice_count":  0,
+    "failed_sample_count":  0,
+    "errors":  [
+
+               ],
+    "note":  "Private expected buckets are used only in this local report; request payloads use neutral filenames and do not send original labels.",
+    "samples":  [
+                    {
+                        "sample_id":  "diversity-spot-01",
+                        "image_id":  "holdout-00000-b3404b141d-clear",
+                        "private_expected_bucket":  "bacterial_or_leaf_spot",
+                        "request_sent_label":  false,
+                        "upload_filename":  "diversity-spot-01.jpg",
+                        "upload_size_bytes":  88463,
+                        "elapsed_ms":  14405,
+                        "ok":  true,
+                        "error":  null,
+                        "observation":  {
+                                            "observation_id":  "live-diversity-diversity-spot-01",
+                                            "worker_id":  "worker-07",
+                                            "crop":  "tomato",
+                                            "zone":  "live-diversity",
+                                            "image_uri":  "web-upload://diversity-spot-01.jpg",
+                                            "capture_source":  "simulated_meta_dat_capture",
+                                            "upload_filename":  "diversity-spot-01.jpg",
+                                            "upload_size_bytes":  88463,
+                                            "upload_mime_type":  "image/jpeg",
+                                            "report_channel":  "typed_report_voice_stand_in",
+                                            "wearer_note":  "tomato leaf observation, single front view",
+                                            "possible_disease":  "Possible tomato leaf spot disease, such as Septoria leaf spot or early blight; not enough evidence to distinguish confidently.",
+                                            "confidence":  "low",
+                                            "limitation_flags":  [
+                                                                     "single_view_only",
+                                                                     "underside_missing",
+                                                                     "no_healthy_comparison",
+                                                                     "model_uncertain"
+                                                                 ],
+                                            "evidence_quality":  "Single front-view image of detached/isolated tomato leaves with visible spotting, yellowing, and necrotic tissue; underside, plant context, and healthy comparison are missing.",
+                                            "next_check":  "Capture close-up front and underside images of attached symptomatic leaves, including one healthy nearby leaf for comparison.",
+                                            "supervisor_action":  "Review additional close-up/underside evidence before confirming disease category.",
+                                            "review_status":  "supervisor_review",
+                                            "treatment_recommendation":  null,
+                                            "finding_why":  "Leaves show many small round to irregular brown lesions with tan centers/darker margins, broader yellowing, and dead patches, which is disease-like but not specific from this view alone.",
+                                            "broad_state":  "disease_like",
+                                            "visible_symptoms":  [
+                                                                     "yellowing leaf tissue",
+                                                                     "multiple brown circular leaf spots",
+                                                                     "tan lesion centers",
+                                                                     "dark lesion margins",
+                                                                     "necrotic patches",
+                                                                     "ragged damaged leaf edges"
+                                                                 ],
+                                            "send_status":  "not_sent_demo_only",
+                                            "analysis_source":  "codex_cli_subscription_vision",
+                                            "model_name":  "codex-cli:gpt-5.5:low",
+                                            "model_latency_ms":  14391
+                                        },
+                        "response_signature":  "{\"possible_disease\":\"Possible tomato leaf spot disease, such as Septoria leaf spot or early blight; not enough evidence to distinguish confidently.\",\"confidence\":\"low\",\"broad_state\":\"disease_like\",\"visible_symptoms\":[\"yellowing leaf tissue\",\"multiple brown circular leaf spots\",\"tan lesion centers\",\"dark lesion margins\",\"necrotic patches\",\"ragged damaged leaf edges\"],\"limitation_flags\":[\"single_view_only\",\"underside_missing\",\"no_healthy_comparison\",\"model_uncertain\"],\"next_check\":\"Capture close-up front and underside images of attached symptomatic leaves, including one healthy nearby leaf for comparison.\"}"
+                    },
+                    {
+                        "sample_id":  "diversity-healthy-01",
+                        "image_id":  "holdout-00040-e990d6c955-clear",
+                        "private_expected_bucket":  "healthy",
+                        "request_sent_label":  false,
+                        "upload_filename":  "diversity-healthy-01.jpg",
+                        "upload_size_bytes":  145977,
+                        "elapsed_ms":  9829,
+                        "ok":  true,
+                        "error":  null,
+                        "observation":  {
+                                            "observation_id":  "live-diversity-diversity-healthy-01",
+                                            "worker_id":  "worker-07",
+                                            "crop":  "tomato",
+                                            "zone":  "live-diversity",
+                                            "image_uri":  "web-upload://diversity-healthy-01.jpg",
+                                            "capture_source":  "simulated_meta_dat_capture",
+                                            "upload_filename":  "diversity-healthy-01.jpg",
+                                            "upload_size_bytes":  145977,
+                                            "upload_mime_type":  "image/jpeg",
+                                            "report_channel":  "typed_report_voice_stand_in",
+                                            "wearer_note":  "tomato leaf observation, single front view",
+                                            "possible_disease":  "no visible disease concern",
+                                            "confidence":  "low",
+                                            "limitation_flags":  [
+                                                                     "single_view_only",
+                                                                     "underside_missing",
+                                                                     "no_healthy_comparison"
+                                                                 ],
+                                            "evidence_quality":  "Single front-view close-up of a tomato leaf; leaf surface is visible but underside and whole-plant context are missing.",
+                                            "next_check":  "Capture the underside of the same leaf and one wider whole-plant view showing nearby leaves for comparison.",
+                                            "supervisor_action":  "No supervisor action needed unless underside or nearby leaves show spots, mildew, or spreading discoloration.",
+                                            "review_status":  "clear",
+                                            "treatment_recommendation":  null,
+                                            "finding_why":  "The visible leaf is mostly green with normal tomato leaf texture; there are no clear lesions, mildew, blight rings, or widespread chlorosis visible in this view.",
+                                            "broad_state":  "healthy_or_low_concern",
+                                            "visible_symptoms":  [
+                                                                     "minor edge irregularity or handling damage"
+                                                                 ],
+                                            "send_status":  "not_sent_demo_only",
+                                            "analysis_source":  "codex_cli_subscription_vision",
+                                            "model_name":  "codex-cli:gpt-5.5:low",
+                                            "model_latency_ms":  9825
+                                        },
+                        "response_signature":  "{\"possible_disease\":\"no visible disease concern\",\"confidence\":\"low\",\"broad_state\":\"healthy_or_low_concern\",\"visible_symptoms\":[\"minor edge irregularity or handling damage\"],\"limitation_flags\":[\"single_view_only\",\"underside_missing\",\"no_healthy_comparison\"],\"next_check\":\"Capture the underside of the same leaf and one wider whole-plant view showing nearby leaves for comparison.\"}"
+                    },
+                    {
+                        "sample_id":  "diversity-curl-01",
+                        "image_id":  "holdout-00097-39f8901f64-clear",
+                        "private_expected_bucket":  "yellow_leaf_curl_or_mosaic",
+                        "request_sent_label":  false,
+                        "upload_filename":  "diversity-curl-01.jpg",
+                        "upload_size_bytes":  79928,
+                        "elapsed_ms":  12171,
+                        "ok":  true,
+                        "error":  null,
+                        "observation":  {
+                                            "observation_id":  "live-diversity-diversity-curl-01",
+                                            "worker_id":  "worker-07",
+                                            "crop":  "tomato",
+                                            "zone":  "live-diversity",
+                                            "image_uri":  "web-upload://diversity-curl-01.jpg",
+                                            "capture_source":  "simulated_meta_dat_capture",
+                                            "upload_filename":  "diversity-curl-01.jpg",
+                                            "upload_size_bytes":  79928,
+                                            "upload_mime_type":  "image/jpeg",
+                                            "report_channel":  "typed_report_voice_stand_in",
+                                            "wearer_note":  "tomato leaf observation, single front view",
+                                            "possible_disease":  "not enough evidence for a specific disease; visible tomato leaf distortion and mottled chlorosis could be virus-like or nutrient/stress-related",
+                                            "confidence":  "low",
+                                            "limitation_flags":  [
+                                                                     "single_view_only",
+                                                                     "underside_missing",
+                                                                     "no_healthy_comparison",
+                                                                     "blurred",
+                                                                     "model_uncertain"
+                                                                 ],
+                                            "evidence_quality":  "Single front-view image shows leaf symptoms but lacks underside, whole-plant context, healthy comparison, and close sharp detail for confident identification.",
+                                            "next_check":  "Capture a sharper close-up of the newest affected leaves plus the leaf undersides and one wider whole-plant view next to a healthy-looking tomato plant in the same zone.",
+                                            "supervisor_action":  "Have supervisor compare with nearby plants and review additional images before labeling as disease.",
+                                            "review_status":  "supervisor_review",
+                                            "treatment_recommendation":  null,
+                                            "finding_why":  "Tomato foliage shows curled, puckered leaves with uneven yellow-green mottling along veins and margins, but the single image cannot separate virus-like symptoms from abiotic stress or nutrient issues.",
+                                            "broad_state":  "disease_like",
+                                            "visible_symptoms":  [
+                                                                     "leaf curling",
+                                                                     "puckering or distortion",
+                                                                     "yellow-green mottling",
+                                                                     "interveinal chlorosis",
+                                                                     "uneven variegated leaf color"
+                                                                 ],
+                                            "send_status":  "not_sent_demo_only",
+                                            "analysis_source":  "codex_cli_subscription_vision",
+                                            "model_name":  "codex-cli:gpt-5.5:low",
+                                            "model_latency_ms":  12158
+                                        },
+                        "response_signature":  "{\"possible_disease\":\"not enough evidence for a specific disease; visible tomato leaf distortion and mottled chlorosis could be virus-like or nutrient/stress-related\",\"confidence\":\"low\",\"broad_state\":\"disease_like\",\"visible_symptoms\":[\"leaf curling\",\"puckering or distortion\",\"yellow-green mottling\",\"interveinal chlorosis\",\"uneven variegated leaf color\"],\"limitation_flags\":[\"single_view_only\",\"underside_missing\",\"no_healthy_comparison\",\"blurred\",\"model_uncertain\"],\"next_check\":\"Capture a sharper close-up of the newest affected leaves plus the leaf undersides and one wider whole-plant view next to a healthy-looking tomato plant in the same zone.\"}"
+                    }
+                ]
+}

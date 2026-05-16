@@ -1,0 +1,139 @@
+﻿{
+    "generated_at":  "2026-05-16T09:17:20.4101124-07:00",
+    "status":  "warn",
+    "backend_health":  {
+                           "ok":  true,
+                           "url":  "http://localhost:8787/health",
+                           "elapsed_ms":  87,
+                           "body":  {
+                                        "ok":  true,
+                                        "provider":  "codex-cli",
+                                        "supported_providers":  [
+                                                                    "codex-cli",
+                                                                    "openai",
+                                                                    "gemini"
+                                                                ],
+                                        "api_model":  "gpt-4.1-mini",
+                                        "codex_model":  "gpt-5.5",
+                                        "codex_reasoning_effort":  "low",
+                                        "gemini_model":  "gemini-2.5-flash-lite",
+                                        "has_api_key":  false,
+                                        "has_gemini_key":  false
+                                    },
+                           "error":  null
+                       },
+    "web":  {
+                "ok":  true,
+                "url":  "http://localhost:19006",
+                "status_code":  200,
+                "elapsed_ms":  60,
+                "content_length":  1271,
+                "server":  null,
+                "title":  "Disease Scout Simulator",
+                "looks_like_disease_scout":  true,
+                "error":  null
+            },
+    "web_route_checks":  [
+                             {
+                                 "ok":  true,
+                                 "url":  "http://localhost:19006",
+                                 "status_code":  200,
+                                 "elapsed_ms":  57,
+                                 "content_length":  1271,
+                                 "server":  null,
+                                 "title":  "Disease Scout Simulator",
+                                 "looks_like_disease_scout":  true,
+                                 "error":  null
+                             },
+                             {
+                                 "ok":  true,
+                                 "url":  "http://127.0.0.1:19006",
+                                 "status_code":  200,
+                                 "elapsed_ms":  54,
+                                 "content_length":  1271,
+                                 "server":  null,
+                                 "title":  "Disease Scout Simulator",
+                                 "looks_like_disease_scout":  true,
+                                 "error":  null
+                             },
+                             {
+                                 "ok":  true,
+                                 "url":  "http://[::1]:19006",
+                                 "status_code":  200,
+                                 "elapsed_ms":  53,
+                                 "content_length":  1271,
+                                 "server":  null,
+                                 "title":  "Disease Scout Simulator",
+                                 "looks_like_disease_scout":  true,
+                                 "error":  null
+                             }
+                         ],
+    "api_port":  8787,
+    "web_port":  19006,
+    "api_listeners":  [
+                          {
+                              "local_address":  "::",
+                              "local_port":  8787,
+                              "state":  "Listen",
+                              "owning_process":  24408,
+                              "process_name":  "node"
+                          }
+                      ],
+    "web_listeners":  [
+                          {
+                              "local_address":  "::",
+                              "local_port":  19006,
+                              "state":  "Listen",
+                              "owning_process":  21884,
+                              "process_name":  "node"
+                          }
+                      ],
+    "lan_candidates":  [
+                           {
+                               "ip":  "100.127.164.111",
+                               "interface_alias":  "WiFi",
+                               "prefix_length":  14,
+                               "prefix_origin":  "Dhcp",
+                               "is_private_lan":  false,
+                               "is_tailscale":  true,
+                               "is_virtual":  false,
+                               "web_url":  "http://100.127.164.111:19006",
+                               "health_url":  "http://100.127.164.111:8787/health",
+                               "analyze_url":  "http://100.127.164.111:8787/api/scout/analyze",
+                               "expo_public_api_url":  "http://100.127.164.111:8787/api/scout/analyze"
+                           }
+                       ],
+    "lan_health_checks":  [
+                              {
+                                  "ip":  "100.127.164.111",
+                                  "interface_alias":  "WiFi",
+                                  "is_private_lan":  false,
+                                  "is_tailscale":  true,
+                                  "is_virtual":  false,
+                                  "health_url":  "http://100.127.164.111:8787/health",
+                                  "analyze_url":  "http://100.127.164.111:8787/api/scout/analyze",
+                                  "web_url":  "http://100.127.164.111:19006",
+                                  "ok":  true,
+                                  "provider":  "codex-cli",
+                                  "error":  null
+                              }
+                          ],
+    "recommended_demo_urls":  {
+                                  "web_url":  "http://100.127.164.111:19006",
+                                  "api_health_url":  "http://100.127.164.111:8787/health",
+                                  "expo_public_disease_scout_api_url":  "http://100.127.164.111:8787/api/scout/analyze",
+                                  "same_host_inferred_analyze_url":  "http://100.127.164.111:8787/api/scout/analyze",
+                                  "route_type":  "tailscale"
+                              },
+    "blockers":  [
+
+                 ],
+    "warnings":  [
+                     "Only non-private-LAN candidates responded to /health. If this is a Tailscale address, the phone must also be on Tailscale; venue Wi-Fi still needs a separate check."
+                 ],
+    "caveats":  [
+                    "A local LAN health check proves the laptop can reach its own advertised address; it does not prove the phone, venue Wi-Fi, or Windows firewall will allow inbound traffic.",
+                    "For the real device run, open the web_url from the phone or DAT host and verify api_health_url from that same network before claiming online analysis works.",
+                    "If phone routing fails, set EXPO_PUBLIC_DISEASE_SCOUT_API_URL to the recommended endpoint before starting Expo, or use the localhost laptop demo fallback."
+                ]
+}

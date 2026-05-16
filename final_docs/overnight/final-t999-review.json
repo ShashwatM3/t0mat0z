@@ -1,0 +1,89 @@
+﻿# Final T999 Review
+
+Generated: 2026-05-16T06:16:16.4395964-07:00
+Verdict: not_complete
+full_outcome_complete: false
+
+## Objective Restated
+
+Run the Disease Scout Memory overnight control loop, preserve a judge-visible disease scouting workflow, verify web/mobile/model/Dogbot/DAT-readiness evidence, and complete only after the 10:00 morning audit proves the outcome without unsupported real-DAT, final-diagnosis, or treatment claims.
+
+## Prompt-To-Artifact Checklist
+
+| Requirement | Status | Evidence | Detail |
+| --- | --- | --- | --- |
+| controlled_run_and_morning_audit | fail | state.yaml, heartbeat, morning-audit.md | before_stop=True; morning_audit_exists=False; heartbeat=running |
+| web_mobile_visual_workflow | fail | npm/Playwright proof, screenshots, visual-professionalism-audit.json | visual_status=pass; screenshots=5; failed=0; npm_exit0=False; playwright_exit0=False |
+| provider_swap_and_live_model | fail | demo-ready-check.json, live-model-smoke.json, live-model-diversity-smoke.json | demo_ready_status=fail; blockers=1; live_model=True; diversity=True |
+| live_browser_upload_and_typed_report | pass | live-ui-upload-smoke.json and live-ui-upload-smoke.png | status=pass; response=200; backend=True; no_treatment=True; screenshot_exists=True; typed_report_preserved=True |
+| deferred_offline_capture | fail | Playwright retry test in e2e source and morning command table | playwright_exit0=False; retry_test_present=True |
+| android_dat_honesty | pass | android-dat-checklist.md, proof packet blocked claims | checklist present; real DAT success not claimed |
+| manual_blind_image_pack | pass | Downloads DiseaseScout-Test-Images pack with neutral filenames and labels.csv | pack_exists=True; image_count=18; label_rows=18; readme_neutral_note=True |
+| dogbot_project_control_receipts | fail | dogbot-auth-status.json, dogbot-reaction-audit.json, and discord-experiment-manifest.json | dogbot_auth_status=blocked; selected=none; dogbot_exit0=False; audit_receipts=44; manifest_rows=44; manifest_matches_audit=True; flagged=0; under_project_control=True |
+| screenshot_cadence | pass | discord-experiment-manifest.json | manifest_messages=44; screenshot_rows=14; expected_min=14 |
+| latency_and_demo_fallback | pass | latency-demo-audit.json | latency_status=pass; max_model_ms=14227 |
+| operator_demo_status_surface | fail | demo-day-status.md and demo-day-status.json | status=fail; blockers=1; warnings=2; web_ok=True; backend_ok=True; dogbot_under_project_control=True |
+| safe_claim_boundaries | fail | demo-day-proof-packet.md, demo-operator-card.md, morning-audit.md | proof packet/operator card present; unsafe_claim_hits=0; sensitive_scan_exit0=False |
+| no_cheating_verifier | fail | morning-holdout-score.md and morning command table | holdout_report_exists=False; holdout_exit0=False; missing_extra_ok=False; safety_rows_100=False; failures_visible=False; diversity_static_check=True |
+| final_winning_demo_verdict | fail | final-t999-review.md after 10:00 | pending until stop time |
+
+## Accepted Experiments
+
+- Dogbot manifest rows: 44
+- Screenshot-bearing receipt rows: 14
+
+## Flagged Experiments
+
+- Flagged by thumbs-down audit: 0
+
+## Screenshots And Tests
+
+- Visual audit: pass, failed=0
+- Latency audit: pass, max_model_latency_ms=14227
+- Demo-ready: status=fail, blockers=1, warnings=2
+
+## Hacks Found Or Resolved
+
+- Label leaks are kept out of live model requests; holdout failures are preserved.
+- Static-response risk is checked by live model diversity smoke.
+- Treatment/final-diagnosis claims are blocked by schema/tests/proof packet wording.
+- Real DAT integration is not claimed without hardware checklist evidence.
+
+## Winning-Objective Verdict
+
+Not complete yet. The run still needs the 10:00 controller audit and final evidence review before any completion claim.
+
+## Blockers
+
+- controlled_run_and_morning_audit: before_stop=True; morning_audit_exists=False; heartbeat=running
+- web_mobile_visual_workflow: visual_status=pass; screenshots=5; failed=0; npm_exit0=False; playwright_exit0=False
+- provider_swap_and_live_model: demo_ready_status=fail; blockers=1; live_model=True; diversity=True
+- deferred_offline_capture: playwright_exit0=False; retry_test_present=True
+- dogbot_project_control_receipts: dogbot_auth_status=blocked; selected=none; dogbot_exit0=False; audit_receipts=44; manifest_rows=44; manifest_matches_audit=True; flagged=0; under_project_control=True
+- operator_demo_status_surface: status=fail; blockers=1; warnings=2; web_ok=True; backend_ok=True; dogbot_under_project_control=True
+- safe_claim_boundaries: proof packet/operator card present; unsafe_claim_hits=0; sensitive_scan_exit0=False
+- no_cheating_verifier: holdout_report_exists=False; holdout_exit0=False; missing_extra_ok=False; safety_rows_100=False; failures_visible=False; diversity_static_check=True
+- final_winning_demo_verdict: pending until stop time
+
+## Evidence Files
+
+- docs/goals/disease-scout-overnight-experiment-control/state.yaml: present, size=49351, mtime=2026-05-16T06:03:01.0986689-07:00
+- docs/goals/disease-scout-overnight-experiment-control/notes/completion-audit-checklist.md: present, size=13093, mtime=2026-05-16T06:05:11.2984398-07:00
+- docs/goals/disease-scout-overnight-experiment-control/notes/morning-audit.md: missing, size=, mtime=
+- final_docs/overnight/demo-ready-check.json: present, size=10786, mtime=2026-05-16T05:55:16.5952358-07:00
+- final_docs/overnight/demo-day-status.json: present, size=7707, mtime=2026-05-16T05:55:16.6117171-07:00
+- final_docs/overnight/dogbot-auth-status.json: present, size=1948, mtime=2026-05-16T06:15:31.6329668-07:00
+- final_docs/overnight/dogbot-auth-recovery-watch.ps1: present, size=6526, mtime=2026-05-16T06:08:58.4767148-07:00
+- final_docs/overnight/dogbot-auth-recovery-watch.log: present, size=3511, mtime=2026-05-16T06:15:31.6577273-07:00
+- final_docs/overnight/dogbot-pending-receipts.jsonl: present, size=7448, mtime=2026-05-16T06:15:31.2597980-07:00
+- scripts/repair-dogbot-auth.ps1: present, size=1885, mtime=2026-05-16T06:05:35.3953942-07:00
+- final_docs/overnight/dogbot-auth-repair.md: present, size=3062, mtime=2026-05-16T06:04:41.4810511-07:00
+- final_docs/overnight/dogbot-reaction-audit-error.txt: missing, size=, mtime=
+- final_docs/overnight/dogbot-reaction-audit.json: present, size=11599, mtime=2026-05-16T05:28:51.6754740-07:00
+- final_docs/overnight/live-ui-upload-smoke.json: present, size=2630, mtime=2026-05-16T03:15:49.6105314-07:00
+- final_docs/overnight/live-ui-upload-smoke.png: present, size=274636, mtime=2026-05-16T03:15:49.6017504-07:00
+- final_docs/discord-experiment-manifest.json: present, size=16385, mtime=2026-05-16T05:26:41.4490786-07:00
+- final_docs/overnight/visual-professionalism-audit.json: present, size=4213, mtime=2026-05-16T06:15:28.2863098-07:00
+- final_docs/overnight/latency-demo-audit.json: present, size=2650, mtime=2026-05-16T06:15:30.2750826-07:00
+- C:/Users/nicof/Downloads/DiseaseScout-Test-Images-20260516-000304: present, size=1, mtime=2026-05-16T00:24:08.0480037-07:00
+- C:/Users/nicof/Downloads/DiseaseScout-Test-Images-20260516-000304/labels.csv: present, size=3296, mtime=2026-05-16T00:03:04.2734935-07:00

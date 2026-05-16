@@ -39,7 +39,7 @@ npm run ai-server
 By default, if `OPENAI_API_KEY` is not present, the proxy uses the local Codex CLI bridge:
 
 ```text
-browser upload -> localhost:8787 -> codex exec -m gpt-5.5 --ephemeral --image --output-schema
+browser upload -> configured proxy host:8787 -> codex exec -m gpt-5.5 --ephemeral --image --output-schema
 ```
 
 That uses the existing Codex/ChatGPT login on this machine. It does not put a key in browser
@@ -49,13 +49,56 @@ because it starts a Codex exec process for each image.
 The bridge pins `gpt-5.5` with low reasoning effort for the fastest available 5.5 mode. Override
 with `DISEASE_SCOUT_CODEX_MODEL` or `DISEASE_SCOUT_CODEX_REASONING_EFFORT` only when needed.
 
+The proxy is provider-swappable behind the same browser endpoint:
+
+```powershell
+$env:DISEASE_SCOUT_MODEL_PROVIDER = "codex-cli" # default when no API key is present
+$env:DISEASE_SCOUT_MODEL_PROVIDER = "openai"
+$env:DISEASE_SCOUT_MODEL_PROVIDER = "gemini"
+```
+
+For Gemini, keep the key only in the server process or a local secret helper:
+
+```powershell
+$env:GEMINI_API_KEY = "<local key>"
+$env:DISEASE_SCOUT_MODEL_PROVIDER = "gemini"
+$env:DISEASE_SCOUT_GEMINI_MODEL = "gemini-2.5-flash-lite"
+npm run ai-server
+```
+
+Do not put API keys in browser code, committed `.env` files, screenshots, or Discord receipts.
+All providers are validated against the same `DiseaseScoutObservation` shape before the app receives
+the result.
+
 Start the web simulator:
 
 ```powershell
 npm run web
 ```
 
-Uploaded images are sent to the local proxy at `http://localhost:8787/api/scout/analyze`.
+Uploaded images are sent to the proxy at `/api/scout/analyze` on port `8787`.
+On the laptop browser this falls back to `http://localhost:8787/api/scout/analyze`.
+When the simulator is opened from a phone on the same network, it infers the Expo page host and
+uses `http://<laptop-lan-host>:8787/api/scout/analyze`, so the phone does not try to call its own
+localhost.
+
+If inference is wrong, set an explicit endpoint before starting Expo:
+
+```powershell
+$env:EXPO_PUBLIC_DISEASE_SCOUT_API_URL = "http://<laptop-lan-ip>:8787/api/scout/analyze"
+npm run web
+```
+
+Before a phone or DAT rehearsal, run the demo network preflight from `prototype\t0mat0z`:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\demo-network-preflight.ps1
+```
+
+It writes `final_docs\overnight\network-preflight.json` with backend health, web status, listening
+ports, LAN candidates, and recommended phone URLs. A Tailscale-only route is logged as a warning
+unless the phone is also on Tailscale; venue Wi-Fi still needs a same-network check.
+
 The default path calls Codex CLI with the attached image and a JSON output schema. The optional
 API path calls the OpenAI Responses API vision endpoint. Both return a structured
 `DiseaseScoutObservation`.
