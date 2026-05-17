@@ -37,10 +37,16 @@ Expected outputs:
 
 ## Colab T4 Run
 
-1. Open `colab_t4_plantdoc_tomato_finetune.ipynb` in Colab.
+1. Open the public Colab launch URL:
+
+   ```text
+   https://colab.research.google.com/github/ShashwatM3/t0mat0z/blob/colab-t4-finetune/training/disease-finetune/colab_t4_plantdoc_tomato_finetune.ipynb
+   ```
+
 2. Set Runtime -> Change runtime type -> T4 GPU.
-3. Upload or mount `PlantDoc-Dataset-master.zip`, or upload the unpacked `PlantDoc-Dataset-master/` folder.
-4. Run the notebook cells.
+3. Run the notebook cells.
+
+The notebook clones the public `colab-t4-finetune` branch and downloads PlantDoc directly from the public dataset repository, so no local file upload or Drive mount is required.
 
 The notebook delegates to:
 
