@@ -1,0 +1,15 @@
+{
+  "dataset_root": "data/raw/PlantDoc-Dataset-master",
+  "crop_filter": "Tomato",
+  "exclude_classes": [
+    "Tomato two spotted spider mites leaf"
+  ],
+  "min_train_images": 20,
+  "image_size": 224,
+  "batch_size": 16,
+  "head_epochs": 3,
+  "finetune_epochs": 2,
+  "base_model": "MobileNetV2",
+  "pretrained_weights": "imagenet",
+  "output_contract": "DiseaseScoutObservation-compatible label and confidence provider"
+}

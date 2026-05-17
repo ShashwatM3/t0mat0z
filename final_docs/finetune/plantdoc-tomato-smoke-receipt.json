@@ -1,0 +1,73 @@
+{
+    "status":  "pass",
+    "generated_at":  "2026-05-16T19:05:35.4159775-07:00",
+    "repo_root":  ".",
+    "dataset_root":  "data\\raw\\PlantDoc-Dataset-master",
+    "training_target":  "Google Colab T4 transfer learning",
+    "local_run_type":  "dataset_manifest_smoke",
+    "local_gpu_training_claimed":  false,
+    "selected_class_count":  8,
+    "train_image_count":  675,
+    "test_image_count":  69,
+    "excluded_classes":  [
+                             "Tomato two spotted spider mites leaf"
+                         ],
+    "min_train_images":  20,
+    "artifacts":  {
+                      "manifest":  "final_docs\\finetune\\plantdoc-tomato-manifest.jsonl",
+                      "label_map":  "final_docs\\finetune\\plantdoc-tomato-label-map.json",
+                      "summary":  "final_docs\\finetune\\plantdoc-tomato-smoke-summary.md",
+                      "colab_notebook":  "training/disease-finetune/colab_t4_plantdoc_tomato_finetune.ipynb",
+                      "train_script":  "training/disease-finetune/train_colab_t4_plantdoc_tomato.py"
+                  },
+    "classes":  [
+                    {
+                        "label_id":  0,
+                        "class_name":  "Tomato Early blight leaf",
+                        "train_count":  79,
+                        "test_count":  9
+                    },
+                    {
+                        "label_id":  1,
+                        "class_name":  "Tomato leaf",
+                        "train_count":  55,
+                        "test_count":  8
+                    },
+                    {
+                        "label_id":  2,
+                        "class_name":  "Tomato leaf bacterial spot",
+                        "train_count":  101,
+                        "test_count":  9
+                    },
+                    {
+                        "label_id":  3,
+                        "class_name":  "Tomato leaf late blight",
+                        "train_count":  101,
+                        "test_count":  10
+                    },
+                    {
+                        "label_id":  4,
+                        "class_name":  "Tomato leaf mosaic virus",
+                        "train_count":  44,
+                        "test_count":  10
+                    },
+                    {
+                        "label_id":  5,
+                        "class_name":  "Tomato leaf yellow virus",
+                        "train_count":  70,
+                        "test_count":  6
+                    },
+                    {
+                        "label_id":  6,
+                        "class_name":  "Tomato mold leaf",
+                        "train_count":  85,
+                        "test_count":  6
+                    },
+                    {
+                        "label_id":  7,
+                        "class_name":  "Tomato Septoria leaf spot",
+                        "train_count":  140,
+                        "test_count":  11
+                    }
+                ]
+}
