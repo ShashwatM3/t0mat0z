@@ -1,6 +1,10 @@
-# lorem_ipsum
+# Disease Scout Classifier Prototype
 
-Monorepo-style layout with two top-level areas:
+Prototype repo for the Meta Wearables disease-scouting classifier demo. The repo is intentionally scoped to one path:
+
+```text
+plant image capture/import -> classifier triage -> DiseaseScoutObservation -> wearer result + supervisor packet
+```
 
 ## [`app/`](./app/)
 
@@ -8,13 +12,17 @@ Expo + React Native disease scout simulator. All JavaScript, Expo config, assets
 
 Current demo path: camera trigger -> disease question -> why question -> `DiseaseScoutObservation` JSON -> supervisor packet.
 
+## [`pipeline/disease-scout-automated-import/`](./pipeline/disease-scout-automated-import/)
+
+Teammate handoff package for the current automated import pipeline: capture/import source, watched-folder or DAT bridge, classifier request/response contract, editable variables, wearer-facing return path, timing receipts, and agent instructions for porting into another process.
+
 ## [`glasses/`](./glasses/)
 
 Meta DAT handoff notes for the Disease Scout capture path. This is currently a checklist/scaffold, not a finished native Android app. The exact real-device acceptance checklist lives at [`final_docs/android-dat-checklist.md`](./final_docs/android-dat-checklist.md).
 
-## [`opportunities/`](./opportunities/)
+## [`final_docs/`](./final_docs/)
 
-Opportunity-specific work lanes for the Meta Wearables hackathon. Start each concept in its own folder so research, fixtures, acceptance checks, and prototypes do not get mixed together before a slice becomes shared app code.
+Reference docs, real-device caveats, and demo receipts. The active classifier proof receipts are in [`final_docs/overnight/`](./final_docs/overnight/) and [`final_docs/auto-import/`](./final_docs/auto-import/).
 
 ## Security guard
 

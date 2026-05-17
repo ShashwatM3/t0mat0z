@@ -1,10 +1,10 @@
 ﻿{
-    "generated_at":  "2026-05-16T02:34:08.6164360-07:00",
+    "generated_at":  "2026-05-16T14:25:24.9472905-07:00",
     "status":  "warn",
     "backend_health":  {
                            "ok":  true,
                            "url":  "http://localhost:8787/health",
-                           "elapsed_ms":  76,
+                           "elapsed_ms":  273,
                            "body":  {
                                         "ok":  true,
                                         "provider":  "codex-cli",
@@ -26,10 +26,48 @@
                 "ok":  true,
                 "url":  "http://localhost:19006",
                 "status_code":  200,
-                "elapsed_ms":  31,
+                "elapsed_ms":  68,
                 "content_length":  1271,
+                "server":  null,
+                "title":  "Disease Scout Simulator",
+                "looks_like_disease_scout":  true,
                 "error":  null
             },
+    "web_route_checks":  [
+                             {
+                                 "ok":  true,
+                                 "url":  "http://localhost:19006",
+                                 "status_code":  200,
+                                 "elapsed_ms":  48,
+                                 "content_length":  1271,
+                                 "server":  null,
+                                 "title":  "Disease Scout Simulator",
+                                 "looks_like_disease_scout":  true,
+                                 "error":  null
+                             },
+                             {
+                                 "ok":  true,
+                                 "url":  "http://127.0.0.1:19006",
+                                 "status_code":  200,
+                                 "elapsed_ms":  52,
+                                 "content_length":  1271,
+                                 "server":  null,
+                                 "title":  "Disease Scout Simulator",
+                                 "looks_like_disease_scout":  true,
+                                 "error":  null
+                             },
+                             {
+                                 "ok":  true,
+                                 "url":  "http://[::1]:19006",
+                                 "status_code":  200,
+                                 "elapsed_ms":  64,
+                                 "content_length":  1271,
+                                 "server":  null,
+                                 "title":  "Disease Scout Simulator",
+                                 "looks_like_disease_scout":  true,
+                                 "error":  null
+                             }
+                         ],
     "api_port":  8787,
     "web_port":  19006,
     "api_listeners":  [
@@ -48,13 +86,6 @@
                               "state":  "Listen",
                               "owning_process":  21884,
                               "process_name":  "node"
-                          },
-                          {
-                              "local_address":  "127.0.0.1",
-                              "local_port":  19006,
-                              "state":  "Listen",
-                              "owning_process":  2232,
-                              "process_name":  "python"
                           }
                       ],
     "lan_candidates":  [

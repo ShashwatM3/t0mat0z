@@ -34,6 +34,10 @@ data/
 # generated demo run state
 final_docs/overnight/*.log
 final_docs/overnight/overnight-heartbeat.json
+final_docs/auto-import/incoming*/
+final_docs/auto-import/*incoming*/
+final_docs/auto-import/*-output/
+final_docs/auto-import/results/
 prototype/
 
 # macOS
@@ -47,13 +51,16 @@ prototype/
 credentials.json
 
 # local AI/operator config - never commit or push
-AGENTS.md
 CLAUDE.md
 .claude/
 .cursor/
 .codex/
 .cursorrules
 .aiderignore
+
+# repo-managed agent instructions are allowed
+!AGENTS.md
+!pipeline/**/AGENTS.md
 
 # private keys, local databases, and signing material
 *.key

@@ -1,0 +1,13 @@
+{
+  "observation_id": "auto-import-20260516-zone-b-001",
+  "worker_id": "worker-07",
+  "crop": "tomato",
+  "zone": "Zone B",
+  "capture_source": "automated_import_watch",
+  "upload_filename": "zone-b-leaf.jpg",
+  "upload_size_bytes": 68432,
+  "upload_mime_type": "image/jpeg",
+  "report_channel": "automated_import_watch",
+  "wearer_note": "yellowing and spots on lower leaves",
+  "image_data_url": "data:image/jpeg;base64,<base64-image-bytes>"
+}

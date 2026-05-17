@@ -7,7 +7,6 @@ param(
 $ErrorActionPreference = "Stop"
 
 $protectedPaths = @(
-  @{ label = "AGENTS.md"; regex = '(^|/)AGENTS\.md$' },
   @{ label = "CLAUDE.md"; regex = '(^|/)CLAUDE\.md$' },
   @{ label = ".claude"; regex = '(^|/)\.claude/' },
   @{ label = ".cursor"; regex = '(^|/)\.cursor/' },

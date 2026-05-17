@@ -1,0 +1,52 @@
+{
+  "pipeline": {
+    "name": "Disease Scout Automated Import",
+    "mode": "local-fast",
+    "watch": false,
+    "speakResult": false,
+    "pollIntervalSeconds": 2,
+    "targetResultSeconds": 15,
+    "targetCaptureToWearerSeconds": 45
+  },
+  "paths": {
+    "autoImportScript": "scripts/auto-import-watch.ps1",
+    "watchPath": "final_docs/auto-import/incoming",
+    "outDir": "final_docs/auto-import/results",
+    "testSampleImage": "app/assets/icon.png"
+  },
+  "classifier": {
+    "apiUrl": "http://localhost:8787/api/scout/analyze",
+    "provider": "local-fast",
+    "liveProvider": "codex-cli",
+    "customBridgeUrl": "",
+    "timeoutSeconds": 180
+  },
+  "observationDefaults": {
+    "workerId": "worker-07",
+    "crop": "tomato",
+    "zone": "Zone B",
+    "wearerNote": "automated glasses or phone photo import"
+  },
+  "wearerReturn": {
+    "channel": "audio",
+    "audioEnabled": true,
+    "notificationEnabled": false,
+    "displayEnabled": false,
+    "maxSentenceCharacters": 220,
+    "template": "Disease Scout: {possible_disease}. Confidence {confidence}. Next check: {next_check}"
+  },
+  "hardware": {
+    "captureSource": "watched-folder",
+    "ordinaryRayBanMetaReturn": "audio-or-phone-notification",
+    "metaRayBanDisplayReturn": "web-app-only-if-tested",
+    "datCaptureAvailable": false,
+    "androidGalleryWatcherAvailable": false,
+    "syncFolderAvailable": true
+  },
+  "safety": {
+    "allowTreatmentAdvice": false,
+    "allowFinalDiagnosisClaim": false,
+    "allowManualFilePickerForFullAutomationClaim": false,
+    "labelLocalFastAsTriage": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiseaseScoutObservation",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "observation_id",
+    "worker_id",
+    "crop",
+    "zone",
+    "capture_source",
+    "possible_disease",
+    "confidence",
+    "evidence_quality",
+    "limitation_flags",
+    "next_check",
+    "review_status",
+    "supervisor_action",
+    "finding_why",
+    "broad_state",
+    "visible_symptoms",
+    "treatment_recommendation"
+  ],
+  "properties": {
+    "observation_id": { "type": "string" },
+    "worker_id": { "type": "string" },
+    "crop": { "type": "string" },
+    "zone": { "type": "string" },
+    "image_uri": { "type": ["string", "null"] },
+    "capture_source": { "type": "string" },
+    "upload_filename": { "type": ["string", "null"] },
+    "upload_size_bytes": { "type": ["number", "null"] },
+    "upload_mime_type": { "type": ["string", "null"] },
+    "report_channel": { "type": ["string", "null"] },
+    "wearer_note": { "type": ["string", "null"] },
+    "possible_disease": { "type": "string" },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unknown"]
+    },
+    "limitation_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_quality": { "type": "string" },
+    "next_check": { "type": "string" },
+    "supervisor_action": { "type": "string" },
+    "review_status": {
+      "type": "string",
+      "enum": ["clear", "supervisor_review", "recapture_needed"]
+    },
+    "treatment_recommendation": { "type": "null" },
+    "finding_why": { "type": "string" },
+    "broad_state": {
+      "type": "string",
+      "enum": ["healthy_or_low_concern", "disease_like", "stress_or_damage", "not_enough_evidence"]
+    },
+    "visible_symptoms": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "send_status": { "type": ["string", "null"] },
+    "analysis_source": { "type": ["string", "null"] },
+    "model_name": { "type": ["string", "null"] },
+    "model_latency_ms": { "type": ["number", "null"] }
+  }
+}

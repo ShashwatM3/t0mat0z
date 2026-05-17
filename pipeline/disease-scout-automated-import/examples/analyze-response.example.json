@@ -1,0 +1,30 @@
+{
+  "observation": {
+    "observation_id": "auto-import-20260516-zone-b-001",
+    "worker_id": "worker-07",
+    "crop": "tomato",
+    "zone": "Zone B",
+    "image_uri": "auto-import://zone-b-leaf.jpg",
+    "capture_source": "automated_import_watch",
+    "upload_filename": "zone-b-leaf.jpg",
+    "upload_size_bytes": 68432,
+    "upload_mime_type": "image/jpeg",
+    "report_channel": "automated_import_watch",
+    "wearer_note": "yellowing and spots on lower leaves",
+    "possible_disease": "possible disease or stress signal",
+    "confidence": "medium",
+    "limitation_flags": ["single_view_only", "no_healthy_comparison", "model_uncertain"],
+    "evidence_quality": "Single-view image shows a possible color or spot pattern that should be reviewed.",
+    "next_check": "Capture the underside of the affected leaf and one neighboring healthy comparison plant.",
+    "supervisor_action": "Review the saved image and next-check capture before assigning a disease label.",
+    "review_status": "supervisor_review",
+    "treatment_recommendation": null,
+    "finding_why": "Visible color variation and possible spotting are present, but the view is not enough for diagnosis.",
+    "broad_state": "disease_like",
+    "visible_symptoms": ["color variation", "possible spotting"],
+    "send_status": "not_sent_demo_only",
+    "analysis_source": "local_fast_pixel_baseline",
+    "model_name": "local-fast:auto-import-watch",
+    "model_latency_ms": 188
+  }
+}
